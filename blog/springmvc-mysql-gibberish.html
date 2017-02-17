@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="google" value="notranslate">
+<meta name="robots" content="index,follow">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="潘瑞峰的个人博客">
+<meta name="twitter:description" content="走走停停看看写写">
+<meta name="twitter:image:src" content="http://www.panruifeng.com/blog/blog/images/avatar.jpeg">
+
+<meta property="og:url" content="http://www.panruifeng.com/blog">
+<meta property="og:title" content="潘瑞峰的个人博客">
+<meta property="og:description" content="走走停停看看写写">
+<meta property="og:site_name" content="潘瑞峰的个人博客">
+<meta property="og:image" content="http://www.panruifeng.com/blog/blog/images/avatar.jpeg">
+<meta property="og:type" content="website">
+<meta name="robots" content="noodp">
+
+<meta itemprop="name" content="潘瑞峰的个人博客">
+<meta itemprop="description" content="走走停停看看写写">
+<meta itemprop="image" content="http://www.panruifeng.com/blog/blog/images/avatar.jpeg">
+
+<link rel="canonical" href="http://www.panruifeng.com/blog">
+
+<link rel="shortcut icon" href="/blog/favicon.png">
+<link rel="apple-itouch-icon" href="/blog/favicon.png">
+<link rel="stylesheet" href="/blog/bundle/index.css">
+<script type="text/javascript">
+    var timeSinceLang = {
+        year: '年前',
+        month: '个月前',
+        day: '天前',
+        hour: '小时前',
+        minute: '分钟前',
+        second: '秒前'
+    };
+    var root = '\/blog';
+</script>
+
+
+        <meta name="keywords" content="中文乱码,mysql中文乱码,springMVC中文乱码,">
+        <meta name="description" content="springMVC-mysql中文乱码">
+        <meta name="author" content="潘瑞峰">
+        <title>springMVC-mysql中文乱码</title>
+    </head>
+    <body>
+        <article class="container">
+            <header class="header-wrap">
+  <a class="index" href="/blog/">
+    <img class="logo" src="/blog/images/avatar.jpeg" />
+    潘瑞峰的个人博客
+  </a>
+  <ul class="menu">
+      <li class="menu-item"><a href="/blog/archive.html">归档</a></li>
+      <li class="menu-item"><a href="/blog/tag.html">标签</a></li>
+      <li class="menu-item"><a href="/blog/about.me.html">作者</a></li>
+      <li class="menu-item"><a href="/blog/atom.xml">订阅</a></li>
+  </ul>
+</header>
+
+            <article class="main article">
+                <h1 class="title">springMVC-mysql中文乱码</h1>
+                <section class="info">
+                    <span class="avatar" style="background-image: url(/blog/images/avatar.jpeg);"></span>
+                    <a class="name" href="/blog/about.me.html">潘瑞峰</a>
+                    
+                    <span class="date" data-time="1487322000"><span class="from"></span></span>
+                    
+                    <span class="tags"><a class="tag" href="/blog/tag/%e4%b8%ad%e6%96%87%e4%b9%b1%e7%a0%81/index.html">中文乱码</a><a class="tag" href="/blog/tag/mysql%e4%b8%ad%e6%96%87%e4%b9%b1%e7%a0%81/index.html">mysql中文乱码</a><a class="tag" href="/blog/tag/springMVC%e4%b8%ad%e6%96%87%e4%b9%b1%e7%a0%81/index.html">springMVC中文乱码</a></span>
+                </section>
+                <article class="content"><h2>web页面乱码</h2>
+
+<p>如果是html页面，可以使用</p>
+
+<pre><code class="language-html">&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=gbk&quot; /&gt;
+</code></pre>
+
+<p>如果是jsp页面，可以使用</p>
+
+<pre><code class="language-html">&lt;%@ page language=&quot;java&quot; import=&quot;java.util.*&quot; pageEncoding=&quot;UTF-8&quot;%&gt;  
+</code></pre>
+
+<h2>后端服务器中中文乱码</h2>
+
+<p>当服务器接收到网页请求参数，参数是中文，而且发生乱码，则可能是由于一下原因：</p>
+
+<ul>
+<li>web页面中文编码和后端服务器编码不一致，比如说web客户端使用的是ISO的编码，而服务器使用的是其他编码，就会出现乱码</li>
+<li>客户端使用了URLEncode</li>
+</ul>
+
+<p>可能的解决方案：</p>
+
+<ul>
+<li>对于第一种原因，需要对接收的每个字符串变量重新编码或者对请求增加filter</li>
+</ul>
+
+<p>&emsp;&emsp;&emsp;1. 重新编码比较简单</p>
+
+<pre><code class="language-java">new String(request.getParameter(&quot;str&quot;).getBytes(&quot;ISO-8859-1&quot;),&quot;UTF-8&quot;)
+</code></pre>
+
+<p>&emsp;&emsp;&emsp;2. 增加filter</p>
+
+<p>&emsp;&emsp;&emsp;修改项目配置文件<code>web.xml</code>，增加如下代码</p>
+
+<pre><code class="language-xml">&lt;filter&gt;  
+    &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;  
+    &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;  
+    &lt;init-param&gt;  
+    	&lt;param-name&gt;encoding&lt;/param-name&gt;  
+    	&lt;param-value&gt;UTF-8&lt;/param-value&gt;  
+    &lt;/init-param&gt;  
+    &lt;init-param&gt;  
+            &lt;param-name&gt;forceEncoding&lt;/param-name&gt;  
+            &lt;param-value&gt;true&lt;/param-value&gt;  
+    &lt;/init-param&gt;  
+&lt;/filter&gt;  
+&lt;filter-mapping&gt;  
+    &lt;filter-name&gt;characterEncodingFilter&lt;/filter-name&gt;  
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;  
+&lt;/filter-mapping&gt;  
+</code></pre>
+
+<p><br/></p>
+
+<ul>
+<li>对于第二种原因，一般是不会发生乱码的，发生乱码一般是由于请求为<code>GET</code>请求，中文参数放在URL内，而服务器没有进行相应的设置</li>
+</ul>
+
+<p>&emsp;&emsp;&emsp;以tomcat为例，修改<code>server.xml</code>，增加<code>URIEncoding=&quot;UTF-8&quot;</code>即可</p>
+
+<pre><code class="language-xml">&lt;Connector URIEncoding=&quot;UTF-8&quot; connectionTimeout=&quot;20000&quot; port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; redirectPort=&quot;8443&quot;/&gt;
+</code></pre>
+
+<h2>数据库乱码（mysql）</h2>
+
+<p>如果服务没有出现乱码，那么说明是数据库的语言配置出问题了，可以通过<code>show variables like 'character_set_%';</code>来查看数据库的编码
+<img src="data:image/gif;base64,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" data-src="/blog/images/springMVC-mysql-gibberish/mysql-charset.jpeg" alt="" /></p>
+
+<p>其中需要关注的是<code>服务器</code>、<code>数据库</code>和<code>数据表部分</code>的编码，如果这三部分不是你想要的编码，那么需要修改。</p>
+
+<pre><code class="language-sql">mysql&gt; SET character_set_client='utf8';
+mysql&gt; SET character_set_connection='utf8';
+mysql&gt; SET character_set_results='utf8';
+</code></pre>
+
+<blockquote>
+<p>注意的是，上述的仅作用于当前的session，也就是当前数据库用户退出后失效</p>
+</blockquote>
+
+<p>如果想永久设置，需要修改mysql的<code>my.cnf</code>，通过<code>vim /etc/my.cnf</code>命令来编辑该文件，进入编辑状态后，在其中修改</p>
+
+<pre><code class="language-cnf">[mysqld]
+default-character-set=utf8
+
+[client]
+default-character-set=utf8
+
+[mysql]
+default-character-set=utf8
+</code></pre>
+
+<p>修改完成后，重启数据库即可，<code>service mysqld restart</code></p>
+
+<p>除了上述修改编码的方式，还可以在建表时指定表的charset。有的时候一个数据库可能有多个用户在使用，如果直接修改整个数据库的编码，可能造成其他用户的不便，所以可以不改变整个系统的语言，仅指定自己所建表的编码</p>
+
+<pre><code class="language-sql">create table mytable(
+	name varchar(100)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+</code></pre>
+</article>
+                <section class="author">
+                <div class="intro">
+                    <div class="ds-thread" data-thread-key="1487322000" data-title="springMVC-mysql中文乱码" data-url="http://www.panruifeng.com/blog/springmvc-mysql-gibberish.html"></div>
+                    <script type="text/javascript">
+                        var duoshuoQuery = {short_name:"panruifeng"};
+                        (function() {
+                            var ds = document.createElement('script');
+                            ds.type = 'text/javascript';ds.async = true;
+                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                            ds.charset = 'UTF-8';
+                            (document.getElementsByTagName('head')[0] 
+                                || document.getElementsByTagName('body')[0]).appendChild(ds);
+                        })();
+                    </script>
+
+
+                </div>
+                </section>
+                <section class="author">
+                    <div class="avatar" style="background-image: url(/blog/images/avatar.jpeg);"></div>
+                    <a class="name" href="/blog/about.me.html">潘瑞峰</a>
+                    <div class="intro">五花马，千金裘，呼儿将出换美酒，与尔同销万古愁。</div>
+                </section>
+                <section class="recommend">
+                    
+                    
+                    <section class="nav next">
+                        <div class="head">下篇文章</div>
+                        <a class="link" href="/blog/github-personal-website.html">github个人主页搭建</a>
+                    </section>
+                    
+                </section>
+                
+    <section id="disqus_thread"></section>
+    <script type="text/javascript">
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//username.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+            </article>
+        </article>
+        <footer class="footer">
+    <span class="copyright">
+        潘瑞峰的个人博客 ©
+        <script type="text/javascript">
+            document.write(new Date().getFullYear());
+        </script>
+    </span>
+    <span class="publish">Powered by <a href="http://www.chole.io/" target="_blank">Ink</a></span>
+</footer>
+
+        <script src="/blog/bundle/index.js"></script>
+    </body>
+</html>

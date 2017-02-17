@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>潘瑞峰的个人博客</title>
   <id>http://www.panruifeng.com/blog</id>
-  <updated>2017-02-14T16:04:57+08:00</updated>
+  <updated>2017-02-17T19:18:10+08:00</updated>
   <subtitle>走走停停看看写写</subtitle>
   <link href="http://www.panruifeng.com/blog"></link>
   <author>
     <name>潘瑞峰的个人博客</name>
   </author>
+  <entry>
+    <title>springMVC-mysql中文乱码</title>
+    <updated>2017-02-17T17:00:00+08:00</updated>
+    <id>tag:www.panruifeng.com,2017-02-17:/blog/springmvc-mysql-gibberish.html</id>
+    <content type="html">&lt;p&gt;在使用springMVC + Hibernate时，有时会出现中文乱码。一般中文乱码出现在web页面，后端服务器和数据库中，而其原因有很多。&lt;/p&gt;&#xA;</content>
+    <link href="http://www.panruifeng.com/blog/springmvc-mysql-gibberish.html"></link>
+    <author>
+      <name>潘瑞峰</name>
+    </author>
+  </entry>
   <entry>
     <title>github个人主页搭建</title>
     <updated>2017-02-14T15:00:00+08:00</updated>
