@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>潘瑞峰的个人博客</title>
   <id>http://www.panruifeng.com/blog</id>
-  <updated>2017-02-17T19:18:10+08:00</updated>
+  <updated>2017-02-25T15:13:39+08:00</updated>
   <subtitle>走走停停看看写写</subtitle>
   <link href="http://www.panruifeng.com/blog"></link>
   <author>
     <name>潘瑞峰的个人博客</name>
   </author>
+  <entry>
+    <title>mysql timestamp和datetime</title>
+    <updated>2017-02-25T15:00:00+08:00</updated>
+    <id>tag:www.panruifeng.com,2017-02-25:/blog/mysql-timestamp.html</id>
+    <content type="html">&lt;p&gt;在实习的时候，看到mysql建表，对于时间字段用的都是timestamp类型。之后在自己的项目中，不问缘由，也全部使用timestamp，然后发生了一系列问题。&lt;/p&gt;&#xA;</content>
+    <link href="http://www.panruifeng.com/blog/mysql-timestamp.html"></link>
+    <author>
+      <name>潘瑞峰</name>
+    </author>
+  </entry>
   <entry>
     <title>springMVC-mysql中文乱码</title>
     <updated>2017-02-17T17:00:00+08:00</updated>
