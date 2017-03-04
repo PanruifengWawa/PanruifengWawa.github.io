@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>潘瑞峰的个人博客</title>
   <id>http://www.panruifeng.com/blog</id>
-  <updated>2017-02-25T15:13:39+08:00</updated>
+  <updated>2017-03-04T23:55:54+08:00</updated>
   <subtitle>走走停停看看写写</subtitle>
   <link href="http://www.panruifeng.com/blog"></link>
   <author>
     <name>潘瑞峰的个人博客</name>
   </author>
+  <entry>
+    <title>某里JAVA实习在线笔试题</title>
+    <updated>2017-03-04T22:22:00+08:00</updated>
+    <id>tag:www.panruifeng.com,2017-03-04:/blog/interview-questions.html</id>
+    <content type="html">&lt;p&gt;最近学长们在各种投简历，他们在线笔试的时候正好看到一道很有趣的在线笔试题，就自己做了一下，由于没有答案，所以也不知道对不对。&lt;/p&gt;&#xA;</content>
+    <link href="http://www.panruifeng.com/blog/interview-questions.html"></link>
+    <author>
+      <name>潘瑞峰</name>
+    </author>
+  </entry>
   <entry>
     <title>mysql timestamp和datetime</title>
     <updated>2017-02-25T15:00:00+08:00</updated>
