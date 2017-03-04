@@ -95,7 +95,7 @@
 
 <ol>
     <li>任取满足条件的m1,m2,m3构成四个切片，并且求四个切片的和 sum1, sum2, sum3, sum4</li>
-    <img src="/images/interview-questions/1.png">
+    <img src="images/interview-questions/1.png">
     <li>如果 <span style="color:red;">sum1=sum2=sum3=sum4</span> ,那么说明可以是一个四等分的切片，且 <span style="color:red;">m1,m2,m3</span> 就是结果，跳出迭代</li>
     <li>如果某次迭代不满足这个条件，我的想法是 <span style="color:red;">消灭最大的sum</span>，也就是将<span style="color:red;">和最大</span>的切片的边缘分配给相邻较小的切片。(切片是相邻的，所以只能分配给相邻的另一个切片)
         <ul>
