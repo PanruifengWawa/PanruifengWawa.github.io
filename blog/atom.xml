@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>潘瑞峰的个人博客</title>
   <id>http://www.panruifeng.com/blog</id>
-  <updated>2017-03-05T00:01:11+08:00</updated>
+  <updated>2017-03-11T15:44:19+08:00</updated>
   <subtitle>走走停停看看写写</subtitle>
   <link href="http://www.panruifeng.com/blog"></link>
   <author>
     <name>潘瑞峰的个人博客</name>
   </author>
+  <entry>
+    <title>JAVA深拷贝和浅拷贝</title>
+    <updated>2017-03-11T15:00:00+08:00</updated>
+    <id>tag:www.panruifeng.com,2017-03-11:/blog/copy.html</id>
+    <content type="html">&lt;p&gt;JAVA里面变量有两种拷贝的方法，深拷贝和浅拷贝。&lt;/p&gt;&#xA;</content>
+    <link href="http://www.panruifeng.com/blog/copy.html"></link>
+    <author>
+      <name>潘瑞峰</name>
+    </author>
+  </entry>
   <entry>
     <title>某里JAVA实习在线笔试题</title>
     <updated>2017-03-04T22:22:00+08:00</updated>
