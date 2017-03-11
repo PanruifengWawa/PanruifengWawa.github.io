@@ -10,25 +10,32 @@
 	<body>
 
  
-		<div data-role="footer" style="overflow:hidden;" data-position="fixed" style="height:200px;">
+		<div data-role="footer"  data-position="fixed" >
 			<div data-role="navbar" >
-				<ul >
-					<a href="#" data-theme="a" style="height:100px;">+</a>
-					<a href="#" data-theme="a" style="height:100px;">-</a>
-					<a href="#" data-theme="a" style="height:100px;">x</a>
-					<a href="#" data-theme="a" style="height:100px;">➗</a>
+				<ul>
+					<li style="height:256px;"><a href="#" data-theme="a" style="height:120px;padding-top:80px;font-size:80px;">+</a></li>
+					<li style="height:256px;"><a href="#" data-theme="a" style="height:120px;padding-top:80px;font-size:80px;">+</a></li>
+					<li style="height:256px;"><a href="#" data-theme="a" style="height:120px;padding-top:80px;font-size:80px;">+</a></li>
+					<li style="height:256px;"><a href="#" data-theme="a" style="height:120px;padding-top:80px;font-size:80px;">+</a></li>
 				</ul>
 				
 			</div>
-			<div data-role="navbar" >
-				<ul >
-					<a href="#" data-theme="a" style="height:200px;padding-top:80px;font-size:40px;">奇数</a>
-					<a href="#" data-theme="b" style="height:200px;padding-top:80px;font-size:40px;">偶数</a>
+			<div data-role="navbar" style="margin-top:10px">
+				<ul>
+					<li style="height:256px;"><a href="#" data-theme="a" style="height:120px;padding-top:80px;font-size:80px;">+</a></li>
+					<li style="height:256px;"><a href="#" data-theme="b" style="height:120px;padding-top:80px;font-size:80px;">+</a></li>
+
 				</ul>
 				
 			</div>
 		</div>
 
 	</body>
+
+	<script>
+		function a() {
+			$("a").removeClass("ui-btn-active");
+		}
+	</script>
 
 </html>
