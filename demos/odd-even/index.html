@@ -8,13 +8,17 @@
 		<script src="lib/jquery-1.11.1.min.js"></script>
 		<script src="lib/jquery.mobile-1.4.5.min.js"></script>
 		<style> 
-			.test {
+			.icontent {
 				width:80%;
 				margin:0 auto;
 				border:1px solid #00F;
 				font-size: 70px;
 				text-align: center;
+				margin-top: 100px;
 			} 
+			.answer {
+				margin-top: 20px;
+			}
 		</style> 
 	</head>
 	<body>
@@ -31,11 +35,12 @@
 			</div>
 
 			<div role="main" class="ui-content" id="practice">
-    			<div class="test">ada</div>
+    			<div class="icontent" id="content"></div>
+    			<div class="icontent answer" id="answer">答案</div>
   			</div>
 
   			<div role="main" class="ui-content" style="display:none" id="course">
-    			<p>course</p>
+    			<p>Test</p>
   			</div>
  
 			<div data-role="footer"  data-position="fixed" >
@@ -62,7 +67,8 @@
 	</body>
 
 	<script>
-		var option = ['+','-','*','/'];
+		var option = ['+','-','×','÷'];
+		var number= ['偶数','奇数'];
 		var storage = [];
 		function clear() {
 
@@ -71,9 +77,6 @@
 			$('#' + show).css('display','block');
 			$('#' + notshow).css('display','none');
 			clear();
-		}
-		function op(i) {
-
 		}
 		function disableNum() {
 			for (var i = 0; i < 2; i++) {
@@ -92,20 +95,34 @@
 			};
 		}
 
+		function showContent() {
+			var content = "";
+			for (var i = 0; i < storage.length; i++) {
+				content += storage[i] + " ";
+			}
+			$('#content').html(content);
+		}
+
 		function num(i) {
-			storage.push(i);
+			storage.push(number[i]);
+			showContent();
+			
 			if (storage.length < 3) {
 				disableNum();
 			} else {
 				console.log(storage);
 				storage = [];
+				cal();
 			}
 		
 		}
+		function cal() {
 
+		}
 		function op(i) {
 			disableOp();
 			storage.push(option[i]);
+			showContent();
 
 		}
 	</script>
