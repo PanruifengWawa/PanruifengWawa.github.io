@@ -20,6 +20,7 @@
 				margin-top: 20%;
 			}
 			.answer {
+				display: none;
 				margin-top: 50px;
 			}
 		</style> 
@@ -140,7 +141,10 @@
 					answer += '未知';
 					break; 
 			}
+			console.log(1);
 			$('#answer').html(answer);
+			$('#answer').fadeIn('slow');
+			console.log(2);
 		}
 		function op(i) {
 			disableOp();
