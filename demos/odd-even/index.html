@@ -3,6 +3,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
+		<title>奇偶数练习</title>
 		<link rel="stylesheet" href="lib/jquery.mobile-1.4.5.min.css" />
 		<script src="lib/jquery-1.11.1.min.js"></script>
 		<script src="lib/jquery.mobile-1.4.5.min.js"></script>
@@ -21,7 +22,7 @@
 			</div>
 
 			<div data-role="content" id="practice">
-    			<p>pratice</p>
+    			<p><span id=""></p>
   			</div>
 
   			<div data-role="content" style="display:none" id="course">
@@ -32,17 +33,17 @@
 				<div data-role="navbar" >
 					<ul>
 	
-						<li><button href="#" data-theme="a" style="height:256px;font-size:80px;">+</button></li>
-						<li><button href="#" data-theme="a" style="height:256px;font-size:80px;">-</button></li>
-						<li><button href="#" data-theme="a" style="height:256px;font-size:80px;">×</button></li>
-						<li><button href="#" data-theme="a" style="height:256px;font-size:80px;">÷</button></li>
+						<li><button href="#" data-theme="a" style="height:256px;font-size:80px;" class="ui-disabled" id="op0" onclick="op(0)">+</button></li>
+						<li><button href="#" data-theme="a" style="height:256px;font-size:80px;" class="ui-disabled" id="op1" onclick="op(1)">-</button></li>
+						<li><button href="#" data-theme="a" style="height:256px;font-size:80px;" class="ui-disabled" id="op2" onclick="op(2)">×</button></li>
+						<li><button href="#" data-theme="a" style="height:256px;font-size:80px;" class="ui-disabled" id="op3" onclick="op(3)">÷</button></li>
 					</ul>
 				
 				</div>
 				<div data-role="navbar" style="margin-top:10px">
 					<ul>
-						<li><button href="#" data-theme="a" style="height:256px;font-size:80px;">奇数</button></li>
-						<li><button href="#" data-theme="b" style="height:256px;font-size:80px;">偶数</button></li>
+						<li><button href="#" data-theme="a" style="height:256px;font-size:80px;" id="num1" onclick="num(1)">奇数</button></li>
+						<li><button href="#" data-theme="b" style="height:256px;font-size:80px;" id="num0" onclick="num(0)">偶数</button></li>
 
 					</ul>
 				
@@ -52,9 +53,51 @@
 	</body>
 
 	<script>
+		var option = ['+','-','*','/'];
+		var storage = [];
+		function clear() {
+
+		}
 		function show(show,notshow) {
 			$('#' + show).css('display','block');
 			$('#' + notshow).css('display','none');
+			clear();
+		}
+		function op(i) {
+
+		}
+		function disableNum() {
+			for (var i = 0; i < 2; i++) {
+				$('#num' + i).addClass('ui-disabled');
+			};
+			for (var i = 0; i < 4; i++) {
+				$('#op' + i).removeClass('ui-disabled');
+			};
+		}
+		function disableOp() {
+			for (var i = 0; i < 2; i++) {
+				$('#num' + i).removeClass('ui-disabled');
+			};
+			for (var i = 0; i < 4; i++) {
+				$('#op' + i).addClass('ui-disabled');
+			};
+		}
+
+		function num(i) {
+			storage.push(i);
+			if (storage.length < 3) {
+				disableNum();
+			} else {
+				console.log(storage);
+				storage = [];
+			}
+		
+		}
+
+		function op(i) {
+			disableOp();
+			storage.push(option[i]);
+
 		}
 	</script>
 
