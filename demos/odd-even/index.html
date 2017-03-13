@@ -26,10 +26,13 @@
 			.red {
 				color:red;
 			}
+			.mbody {
+				background-image: url(img/bg.jpeg) ;
+			}
 		</style> 
 	</head>
-	<body>
-		<div data-role="page">
+	<body >
+		<div data-role="page" class="mbody">
 			<div data-role="header"  data-position="fixed" >
 				<div data-role="navbar" >
 					<ul>
@@ -77,13 +80,11 @@
 		var option = ['+','-','×','÷'];
 		var number= ['偶数','奇数'];
 		var storage = [];
-		function clear() {
 
-		}
 		function show(show,notshow) {
 			$('#' + show).css('display','block');
 			$('#' + notshow).css('display','none');
-			clear();
+
 		}
 		function disableNum() {
 			for (var i = 0; i < 2; i++) {
