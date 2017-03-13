@@ -23,6 +23,9 @@
 				display: none;
 				margin-top: 50px;
 			}
+			.red {
+				color:red;
+			}
 		</style> 
 	</head>
 	<body>
@@ -126,7 +129,7 @@
 		function cal() {
 			var num1 = storage[0] == '偶数' ? 0 : 1;
 			var num2 = storage[2] == '偶数' ? 0 : 1;
-			var answer = "答案: ";
+			var answer = "答案: <span class='red'>";
 			switch(storage[1]) {
 				case "+" :
 					answer += (num1 + num2) % 2 == 0 ? '偶数' : '奇数';
@@ -141,7 +144,7 @@
 					answer += '未知';
 					break; 
 			}
-			console.log(1);
+			answer += "</span>";
 			$('#answer').html(answer);
 			$('#answer').fadeIn('slow');
 			console.log(2);
