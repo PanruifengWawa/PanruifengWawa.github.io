@@ -13,15 +13,19 @@
 				<div data-role="navbar" >
 					<ul>
 	
-						<li><button href="#" data-theme="a" style="height:180px;font-size:60px;">练习</button></li>
-						<li><button href="#" data-theme="a" style="height:180px;font-size:60px;">通关</button></li>
+						<li><button href="#" data-theme="a" style="height:180px;font-size:60px;" onclick="show('practice','course')">练习</button></li>
+						<li><button href="#" data-theme="a" style="height:180px;font-size:60px;" onclick="show('course','practice')">通关</button></li>
 					</ul>
 				
 				</div>
 			</div>
 
-			<div data-role="content">
-    			<p>页面内容</p>
+			<div data-role="content" id="practice">
+    			<p>pratice</p>
+  			</div>
+
+  			<div data-role="content" style="display:none" id="course">
+    			<p>course</p>
   			</div>
  
 			<div data-role="footer"  data-position="fixed" >
@@ -48,8 +52,9 @@
 	</body>
 
 	<script>
-		function a() {
-			$("a").removeClass("ui-btn-active");
+		function show(show,notshow) {
+			$('#' + show).css('display','block');
+			$('#' + notshow).css('display','none');
 		}
 	</script>
 
