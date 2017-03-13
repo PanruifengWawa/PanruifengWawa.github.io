@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-<html>
+<html class="mbody">
 	<head>
 		<meta charset="utf-8" />
 		<title>奇偶数练习</title>
@@ -11,7 +11,6 @@
 			.icontent {
 				width:80%;
 				margin:0 auto;
-/*				border:1px solid #00F;*/
 				font-size: 120px;
 				text-align: center;
 				
@@ -28,16 +27,17 @@
 			}
 			.mbody {
 				background-image: url(img/bg.jpeg) ;
-				-moz-background-size:cover;
-    			-webkit-background-size:cover;
-    			-o-background-size:cover;
-   				background-size:cover;
+				background-attachment:fixed;
+				background-position:center;
+				/*background: rgba(249, 249, 249, 0)*/
+				ackground-color:rgba(249, 249, 249, 0);
 			}
+			
 		</style> 
 	</head>
-	<body >
-		<div data-role="page" class="mbody">
-			<div data-role="header"  data-position="fixed" >
+	<body>
+		<div data-role="page" >
+			<div data-role="header"  data-position="fixed">
 				<div data-role="navbar" >
 					<ul>
 	
@@ -51,6 +51,7 @@
 			<div role="main" class="ui-content" id="practice">
     			<div class="icontent content" id="content"></div>
     			<div class="icontent answer" id="answer"></div>
+
   			</div>
 
   			<div role="main" class="ui-content" style="display:none" id="course">
