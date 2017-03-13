@@ -107,6 +107,10 @@
 		}
 
 		function num(i) {
+			if (storage.length == 3) {
+				storage = [];
+			}
+
 			storage.push(number[i]);
 			showContent();
 			
@@ -114,13 +118,29 @@
 				disableNum();
 			} else {
 				console.log(storage);
-				storage = [];
 				cal();
 			}
 		
 		}
 		function cal() {
-			// var 
+			var num1 = storage[0] == '偶数' ? 0 : 1;
+			var num2 = storage[2] == '偶数' ? 0 : 1;
+			var answer = "答案: ";
+			switch(storage[1]) {
+				case "+" :
+					answer += (num1 + num2) % 2 == 0 ? '偶数' : '奇数';
+					break; 
+				case "-" :
+					answer += (num1 - num2) % 2 == 0 ? '偶数' : '奇数';
+					break; 
+				case "×" :
+					answer += (num1 * num2) % 2 == 0 ? '偶数' : '奇数';
+					break; 
+				case "÷" :
+					answer += '未知';
+					break; 
+			}
+			$('#answer').html(answer);
 		}
 		function op(i) {
 			disableOp();
