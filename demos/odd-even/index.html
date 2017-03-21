@@ -8,7 +8,9 @@
 		<script src="lib/jquery-1.11.1.min.js"></script>
 		<script src="lib/jquery.mobile-1.4.5.min.js"></script>
 		<style> 
-
+			.content {
+				height: 460px;
+			}
 			.mbody {
 				background-image: url(img/bg.jpeg) ;
 				-moz-background-size:cover;
@@ -75,12 +77,16 @@
 				border-style: solid; 
 				border-color: transparent transparent #2273f6; 
 			} */
-			.bar {
+			.choose1 {
 				border-radius:40px;
 				background:#dd7e6b;
 				display: inline-block;;
 				width: 209px;
 				height: 460px;
+				margin-left: 50px;
+			}
+			.choose2 {
+				display: inline-block;;
 				margin-left: 50px;
 			}
 		</style> 
@@ -99,8 +105,8 @@
 			</div>
 
 			<div role="main" class="ui-content" id="practice">
-    			<div  id="content">
-    				<div class="bar"> 
+    			<div  id="content" class="content">
+    				<div class="choose1"> 
     					<div class="circle mblack" id="even" style="margin-top:20px;">
     						<div class="square square_a mwhite"></div><br/>
     						<div class="square square_c mwhite"></div>
@@ -113,6 +119,16 @@
     						<div class="square square_d mblack"></div>
     					</div>
     				
+    				</div>
+
+    				<div class="choose2" >
+    					<div class="circle mwhite" id="odd" style="margin-bottom:200px;">
+    						<div class="square square_a mblack"></div>
+    						<div class="square square_b mblack"></div><br/>
+    						<div class="square square_c mblack"></div>
+    						<div class="square square_d mblack"></div>
+    					</div>
+
     				</div>
     				
     			</div>
