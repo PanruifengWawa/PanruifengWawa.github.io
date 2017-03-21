@@ -9,13 +9,6 @@
 		<script src="lib/jquery.mobile-1.4.5.min.js"></script>
 		<style> 
 
-			.answer {
-				display: none;
-				margin-top: 50px;
-			}
-			.red {
-				color:red;
-			}
 			.mbody {
 				background-image: url(img/bg.jpeg) ;
 				-moz-background-size:cover;
@@ -62,7 +55,7 @@
 			.mwhite {
 				background:white;
 			}
-			#pentagon { 
+			/*#pentagon { 
 				display: inline-block;
 				position: relative; 
 				width: 54px; 
@@ -81,7 +74,15 @@
 				border-width: 0 45px 35px; 
 				border-style: solid; 
 				border-color: transparent transparent #2273f6; 
-			} 
+			} */
+			.bar {
+				border-radius:40px;
+				background:#dd7e6b;
+				display: inline-block;;
+				width: 209px;
+				height: 460px;
+				margin-left: 50px;
+			}
 		</style> 
 	</head>
 	<body>
@@ -99,20 +100,24 @@
 
 			<div role="main" class="ui-content" id="practice">
     			<div  id="content">
-    				<div class="circle mwhite" id="odd">
-    					<div class="square square_a mblack"></div>
-    					<div class="square square_b mblack"></div><br/>
-    					<div class="square square_c mblack"></div>
-    					<div class="square square_d mblack"></div>
+    				<div class="bar"> 
+    					<div class="circle mblack" id="even" style="margin-top:20px;">
+    						<div class="square square_a mwhite"></div><br/>
+    						<div class="square square_c mwhite"></div>
+    						<div class="square square_d mwhite"></div>
+    					</div>
+    					<div class="circle mwhite" id="odd">
+    						<div class="square square_a mblack"></div>
+    						<div class="square square_b mblack"></div><br/>
+    						<div class="square square_c mblack"></div>
+    						<div class="square square_d mblack"></div>
+    					</div>
+    				
     				</div>
-    				<div id="pentagon"><span style="margin-top:-100px">±</span></div>
-    				<div class="circle mblack" id="even">
-    					<div class="square square_a mwhite"></div><br/>
-    					<div class="square square_c mwhite"></div>
-    					<div class="square square_d mwhite"></div>
-    				</div>
+    				
     			</div>
-    			<div class="icontent answer" id="answer"></div>
+
+   
     			
     			
 
