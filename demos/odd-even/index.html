@@ -8,16 +8,7 @@
 		<script src="lib/jquery-1.11.1.min.js"></script>
 		<script src="lib/jquery.mobile-1.4.5.min.js"></script>
 		<style> 
-			.icontent {
-				width:80%;
-				margin:0 auto;
-				font-size: 120px;
-				text-align: center;
-				
-			} 
-			.content {
-				margin-top: 20%;
-			}
+
 			.answer {
 				display: none;
 				margin-top: 50px;
@@ -36,27 +27,61 @@
 				border: 3px;
 			}
 			.circle {
-				background:#dddddd;
-				width:200px;
-				height:200px;
+				width:209px;
+				height:209px;
 				border-radius:50%;
 				-moz-border-radius:50%; /* 老的 Firefox */
+				display: inline-block;
 			}
 			.square {
-
 				width:50px;
 				height:50px;
-				background:black;
 				display: inline-block;
-				box-shadow:5px 2px 6px #000 inset;
+				border:2px solid rgb(0,217,255);
 			}
-			.square1 {
+			.square_a {
 				margin-top: 50px;
+				margin-left: 50px;
+
 			}
-			.square2 {
+			.square_b {
+				margin-left: -3px;
+
+			}
+			.square_c {
+				margin-top: -3px;
 				margin-left: 50px;
 			}
-			
+			.square_d {
+				margin-top: -3px;
+				margin-left: -3px;
+			}
+			.mblack{
+				background:black;
+			}
+			.mwhite {
+				background:white;
+			}
+			#pentagon { 
+				display: inline-block;
+				position: relative; 
+				width: 54px; 
+				border-width: 50px 18px 0; 
+				border-style: solid; 
+				border-color: #2273f6 transparent;
+
+			} 
+			#pentagon:before { 
+				content: ""; 
+				position: absolute; 
+				height: 0; 
+				width: 0; 
+				top: -85px; 
+				left: -18px; 
+				border-width: 0 45px 35px; 
+				border-style: solid; 
+				border-color: transparent transparent #2273f6; 
+			} 
 		</style> 
 	</head>
 	<body>
@@ -73,14 +98,23 @@
 			</div>
 
 			<div role="main" class="ui-content" id="practice">
-    			<div class="icontent content" id="content"></div>
-    			<div class="icontent answer" id="answer"></div>
-    			<div class="circle">
-    				<div class="square square1 square2"></div>
-    				<div class="square"></div><br/>
-    				<div class="square square2"></div>
-    				<div class="square"></div>
+    			<div  id="content">
+    				<div class="circle mwhite" id="odd">
+    					<div class="square square_a mblack"></div>
+    					<div class="square square_b mblack"></div><br/>
+    					<div class="square square_c mblack"></div>
+    					<div class="square square_d mblack"></div>
+    				</div>
+    				<div id="pentagon"><span style="margin-top:-100px">±</span></div>
+    				<div class="circle mblack" id="even">
+    					<div class="square square_a mwhite"></div><br/>
+    					<div class="square square_c mwhite"></div>
+    					<div class="square square_d mwhite"></div>
+    				</div>
     			</div>
+    			<div class="icontent answer" id="answer"></div>
+    			
+    			
 
   			</div>
 
