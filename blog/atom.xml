@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>潘瑞峰的个人博客</title>
   <id>http://www.panruifeng.com/blog</id>
-  <updated>2017-03-11T15:44:19+08:00</updated>
+  <updated>2017-03-21T21:55:14+08:00</updated>
   <subtitle>走走停停看看写写</subtitle>
   <link href="http://www.panruifeng.com/blog"></link>
   <author>
     <name>潘瑞峰的个人博客</name>
   </author>
+  <entry>
+    <title>springMVC自定义注解AOP以及请求响应参数格式</title>
+    <updated>2017-03-21T21:00:00+08:00</updated>
+    <id>tag:www.panruifeng.com,2017-03-21:/blog/springmvc-aop-underline.html</id>
+    <content type="html">&lt;ol&gt;&#xA;&lt;li&gt;springMVC有很多接收参数的方式，还提供了参数格式转换(峰驼转下划线)。 2. springMVC提供了自定义注解AOP来进行控制反转&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;</content>
+    <link href="http://www.panruifeng.com/blog/springmvc-aop-underline.html"></link>
+    <author>
+      <name>潘瑞峰</name>
+    </author>
+  </entry>
   <entry>
     <title>JAVA深拷贝和浅拷贝</title>
     <updated>2017-03-11T15:00:00+08:00</updated>
