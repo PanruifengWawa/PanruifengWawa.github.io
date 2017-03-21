@@ -35,6 +35,27 @@
 			button {
 				border: 3px;
 			}
+			.circle {
+				background:#dddddd;
+				width:200px;
+				height:200px;
+				border-radius:50%;
+				-moz-border-radius:50%; /* 老的 Firefox */
+			}
+			.square {
+
+				width:50px;
+				height:50px;
+				background:black;
+				display: inline-block;
+				box-shadow:5px 2px 6px #000 inset;
+			}
+			.square1 {
+				margin-top: 50px;
+			}
+			.square2 {
+				margin-left: 50px;
+			}
 			
 		</style> 
 	</head>
@@ -54,6 +75,12 @@
 			<div role="main" class="ui-content" id="practice">
     			<div class="icontent content" id="content"></div>
     			<div class="icontent answer" id="answer"></div>
+    			<div class="circle">
+    				<div class="square square1 square2"></div>
+    				<div class="square"></div><br/>
+    				<div class="square square2"></div>
+    				<div class="square"></div>
+    			</div>
 
   			</div>
 
