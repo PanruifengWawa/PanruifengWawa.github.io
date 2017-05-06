@@ -27,14 +27,14 @@ function addBusGeneral(){
     list:["是","否"],
     add:wrpperAdd(geneNumberItem("若采用小汽车上班：</br>\
       <span class='bold-normal'>较快情况大概需要_分钟</br>\
-      较慢情况概需要_分钟")),
+      较慢情况大概需要_分钟")),
     indexs:[0]
   });
   addQuestion({
     type:"single",
     title:"从您家到公司，是否方便采用地铁？",
     list:["可以","可以但不方便（家或公司离地铁站远/需要多次换乘/时间太长等原因）","不可以"],
-    add:wrpperAdd(geneNumberItem("如果采用地铁上班，单程：</br>较快情况大概_分钟</br>较慢情况下大概_分钟")+
+    add:wrpperAdd(geneNumberItem("如果采用地铁上班，单程：</br>较快情况下大概_分钟</br>较慢情况下大概_分钟")+
           wrpperAddTitle("通常情况下地铁内是否拥挤？")+
           geneSingleItem(["有座位","需站立不太拥挤","需站立拥挤"])),
     indexs:[0,1]
@@ -86,7 +86,7 @@ function appendBusSenario2(){
       senario.last().each(function(item,i){
         addQuestion({
           type:"single",
-          title:"从您家到工作地点，有新开车线路"+(i+1)+"开通（信息如右侧），您上班是否会放弃公交车选择自驾？",
+          title:"从您家到工作地点，有新自驾线路"+(i+1)+"开通（信息如右侧），您会选择？",
           list:["原选择（公交车）","新自驾路线"+(i+1)],
           size:"two",
           subTitle:"场景"+(i+1)+":<span class='red'>"+((i+1>1)?"(此场景不同于以上场景)":"")+"<br/></span>",
@@ -96,7 +96,7 @@ function appendBusSenario2(){
           times=generateSenrio(item[2],item[1],getTUp(),getTLow());
         }
         item.append(times.clone());
-		    var a="自驾线路"+(i+1);
+		    var a="自驾路线"+(i+1);
         var ctimes=generateSenrio(item[6],item[5],geneTUp(item[6],item[5]),geneTLow(item[6],item[5]));
         item.append(ctimes);
         J.id("quesWrapper").child().last().append(wrapperSena(geneSenario(getCostText(getCost()),transType,times,item[3],undefined,getMean(),a)
@@ -114,7 +114,7 @@ function appendBusSenario2(){
       senario.last().each(function(item,i){
         addQuestion({
           type:"single",
-          title:"从您家到工作地点，有新开车线路"+(i+1)+"开通（信息如右侧），您上班是否会放弃公交车选择打车？",
+          title:"从您家到工作地点，有新打车方式"+(i+1)+"开通（信息如右侧），您会选择？",
           list:["原选择（公交车）","新打车方式"+(i+1)],
           size:"two",
           subTitle:"场景"+(i+1)+":<span class='red'>"+((i+1>1)?"(此场景不同于以上场景)":"")+"<br/></span>",
@@ -165,7 +165,7 @@ function appendBusRest1(){
     });
     addTable(
       ["我已经采用公交车上班很长一段时间了。"
-	    ,"我出行时会习惯性选择公交车。"
+	    ,"我出行时习惯性选择公交车。"
         ,"我会下意识地采用公交车出行。"
         ,"不采用公交车上班，我会感觉有些奇怪。"
         ,"我不会考虑其他选择，就会选择公交车上班。"
@@ -180,7 +180,7 @@ function appendBusRest1(){
         ,"我愿意绕行一段，避开交通状况不清楚的路段（可能拥堵）。"
         ,"我愿意为追求更多的利益而承担较大风险。"
         ,"对于不太熟悉的上班出行选择/路线，我一般不会去尝试。"
-        ,"从地点A到地点B， 选择1时间可能为30~60分钟，选择2时间可能为40~50分钟，我更偏向于选择1"
+        ,"早上上班， 选择1时间可能为30~60分钟，选择2时间可能为40~50分钟，我更偏向于选择1"
         ,"我不喜欢做有风险的决定，尽管它有可能带来较多利益。"],
       ["非常符合","较为符合","中立","不大符合","完全不符合"],
       "请选择所描述内容是否符合您的实际或您是否同意"
@@ -234,7 +234,7 @@ function appendBusRest2(){
       "请选择所描述内容是否符合您的实际或您是否同意"
     );
     addTable(
-      ["从家到工作地，我更愿意使用公共交通上下班。"
+      ["从家到工作地，我习惯使用公共交通上下班。"
         ,"从家到工作地，我更愿意使用小汽车（自驾/打车）上下班"
         ,"我身边重要的人都希望我多采用小汽车（自驾/打车）上下班"
         ,"在我家或工作地点附近，有比较方便的公交站点，采用公交上班会较为方便。"

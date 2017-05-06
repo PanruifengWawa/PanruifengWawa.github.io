@@ -365,7 +365,7 @@ function geneTimeEle(x){
   x.each(function(a){
     if(Math.round(a[2]*100)!=0&&i<6){
       i++;
-      s+='<div class="new-time">'+Math.round(a[0])+'~'+Math.round(a[1])+'分钟 到达的可能性是 '+Math.round(a[2]*100)+'%</div>';
+      s+='<div class="new-time">'+Math.round(a[0])+'~'+Math.round(a[1])+'分钟到达的可能性'+Math.round(a[2]*100)+'%</div>';
     }
   });
   s+='</div>';
@@ -667,7 +667,7 @@ function allEnd(){
         if(data.data==1){
           J.show("请不要重复提交","warn");
         }else{
-          J.showWait("提交成功！奖金24小时内到账","success");
+          J.showWait("提交成功！奖金48小时内到账","success");
         }
       },
       error: function (err) {
@@ -721,7 +721,7 @@ function lotter(obj){
           canLot=true;
           if(money>0){
             obj.next().html('恭喜您中奖了！本次您中了<span class="red money">'+money+'</span>元！</br>\
-            <span class="lotter-warn">(后续有另一次抽奖，需完成后续内容才能获得红包)</span>\
+            <span class="lotter-warn">(后续有另一次抽奖，需完成全部内容才能获得红包)</span>\
             <div class="button m-s" onclick="'+lottetNext+'()">下一步</div>');
             lot=true;
           }else{
@@ -731,9 +731,9 @@ function lotter(obj){
           }
         }else{
           if(money>0){
-            obj.next().html('恭喜您中奖了！本次您中了<span class="red money">'+money+'</span>元！共'+(money+last_money)+'元。请填写您的支付宝账号方便转账</br>\
-            <span class="lotter-warn">(注：本调查为科研项目，只能采用人工后期转账，最晚隔天24:00前到账)</span></br>\
-            <input placeholder="支付宝账号" id="account"/>\
+            obj.next().html('恭喜您！本次您中了<span class="red money">'+money+'</span>元！两次抽奖共'+(money+last_money)+'元。请填写您的支付宝账号和姓名方便转账</br>\
+            <span class="lotter-warn">(注：后期判定为有效问卷才能获得奖励（防止乱填）。本调查为科研项目，只能采用人工后期转账，最晚隔天24:00前到账)</span></br>\
+            <input placeholder="支付宝账号和姓名" id="account"/>\
             <div class="button m-s" onclick="allEnd()">提交</div>');
             lot=true;
             J.cookie("can_lotter","false");
@@ -1035,20 +1035,20 @@ function hideLotter(){
 
 //以下为方便测试的代码，发布之前请删除
 //按空格键快捷填写
-// window.onkeydown=function(event){
-//   if(event.keyCode==32){
-//     J.attr("a-type=table").each(function(item){
-//       item.child(1).click();
-//     })
-//     J.attr("a-type=single").each(function(item){
-//       item.next().child(0).child(0).click();
-//     });
-//     J.attr("a-type=number").each(function(item){
-//       item.findClass("q-num").val(5);
-//     });
-//     J.scrollTo(J.id("paper").hei());
-//   }
-// }
+window.onkeydown=function(event){
+  if(event.keyCode==32){
+    J.attr("a-type=table").each(function(item){
+      item.child(1).click();
+    })
+    J.attr("a-type=single").each(function(item){
+      item.next().child(0).child(0).click();
+    });
+    J.attr("a-type=number").each(function(item){
+      item.findClass("q-num").val(5);
+    });
+    J.scrollTo(J.id("paper").hei());
+  }
+}
 
 
 
