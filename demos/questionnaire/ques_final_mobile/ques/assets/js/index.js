@@ -1052,20 +1052,20 @@ function hideLotter(){
 
 //以下为方便测试的代码，发布之前请删除
 //按空格键快捷填写
-window.onkeydown=function(event){
-  if(event.keyCode==32){
-    J.attr("a-type=table").each(function(item){
-      item.child(1).click();
-    })
-    J.attr("a-type=single").each(function(item){
-      item.next().child(0).child(0).click();
-    });
-    J.attr("a-type=number").each(function(item){
-      item.findClass("q-num").val(5);
-    });
-    J.scrollTo(J.id("paper").hei());
-  }
-}
+// window.onkeydown=function(event){
+//   if(event.keyCode==32){
+//     J.attr("a-type=table").each(function(item){
+//       item.child(1).click();
+//     })
+//     J.attr("a-type=single").each(function(item){
+//       item.next().child(0).child(0).click();
+//     });
+//     J.attr("a-type=number").each(function(item){
+//       item.findClass("q-num").val(5);
+//     });
+//     J.scrollTo(J.id("paper").hei());
+//   }
+// }
 
 
 
