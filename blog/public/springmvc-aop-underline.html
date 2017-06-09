@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="google" value="notranslate">
+<meta name="robots" content="index,follow">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="潘瑞峰的个人博客">
+<meta name="twitter:description" content="走走停停看看写写">
+<meta name="twitter:image:src" content="http://www.panruifeng.com/blog/blog/images/avatar.jpeg">
+
+<meta property="og:url" content="http://www.panruifeng.com/blog">
+<meta property="og:title" content="潘瑞峰的个人博客">
+<meta property="og:description" content="走走停停看看写写">
+<meta property="og:site_name" content="潘瑞峰的个人博客">
+<meta property="og:image" content="http://www.panruifeng.com/blog/blog/images/avatar.jpeg">
+<meta property="og:type" content="website">
+<meta name="robots" content="noodp">
+
+<meta itemprop="name" content="潘瑞峰的个人博客">
+<meta itemprop="description" content="走走停停看看写写">
+<meta itemprop="image" content="http://www.panruifeng.com/blog/blog/images/avatar.jpeg">
+
+<link rel="canonical" href="http://www.panruifeng.com/blog">
+
+<link rel="shortcut icon" href="/blog/favicon.png">
+<link rel="apple-itouch-icon" href="/blog/favicon.png">
+<link rel="stylesheet" href="/blog/bundle/index.css">
+<script type="text/javascript">
+    var timeSinceLang = {
+        year: '年前',
+        month: '个月前',
+        day: '天前',
+        hour: '小时前',
+        minute: '分钟前',
+        second: '秒前'
+    };
+    var root = '\/blog';
+</script>
+
+
+        <meta name="keywords" content="SpringMVC请求参数格式与返回数据格式,annotation,aspect,aop,自定义注解,切面,">
+        <meta name="description" content="springMVC自定义注解AOP以及请求响应参数格式">
+        <meta name="author" content="潘瑞峰">
+        <title>springMVC自定义注解AOP以及请求响应参数格式</title>
+    </head>
+    <body>
+        <article class="container">
+            <header class="header-wrap">
+  <a class="index" href="/blog/">
+    <img class="logo" src="/blog/images/avatar.jpeg" />
+    潘瑞峰的个人博客
+  </a>
+  <ul class="menu">
+      <li class="menu-item"><a href="/blog/archive.html">归档</a></li>
+      <li class="menu-item"><a href="/blog/tag.html">标签</a></li>
+      <li class="menu-item"><a href="/blog/about.me.html">作者</a></li>
+      <li class="menu-item"><a href="/blog/atom.xml">订阅</a></li>
+  </ul>
+</header>
+
+            <article class="main article">
+                <h1 class="title">springMVC自定义注解AOP以及请求响应参数格式</h1>
+                <section class="info">
+                    <span class="avatar" style="background-image: url(/blog/images/avatar.jpeg);"></span>
+                    <a class="name" href="/blog/about.me.html">潘瑞峰</a>
+                    
+                    <span class="date" data-time="1490101200"><span class="from"></span></span>
+                    
+                    <span class="tags"><a class="tag" href="/blog/tag/SpringMVC%e8%af%b7%e6%b1%82%e5%8f%82%e6%95%b0%e6%a0%bc%e5%bc%8f%e4%b8%8e%e8%bf%94%e5%9b%9e%e6%95%b0%e6%8d%ae%e6%a0%bc%e5%bc%8f/index.html">SpringMVC请求参数格式与返回数据格式</a><a class="tag" href="/blog/tag/annotation/index.html">annotation</a><a class="tag" href="/blog/tag/aspect/index.html">aspect</a><a class="tag" href="/blog/tag/aop/index.html">aop</a><a class="tag" href="/blog/tag/%e8%87%aa%e5%ae%9a%e4%b9%89%e6%b3%a8%e8%a7%a3/index.html">自定义注解</a><a class="tag" href="/blog/tag/%e5%88%87%e9%9d%a2/index.html">切面</a></span>
+                </section>
+                <article class="content"><h1>Spring MVC 请求参数和返回参数的格式</h1>
+
+<h2>1. 峰驼转下划线</h2>
+
+<p>在JAVA中,变量的命名方式一般为峰驼型(如userName),而在前端则是下划线方式(如user_name),springMVC提供了一种转换的适配</p>
+
+<p>对dispacther的jackson进行配置</p>
+
+<pre><code class="language-xml">&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter&quot;&gt;
+              &lt;property name=&quot;messageConverters&quot;&gt;
+                     &lt;list&gt;
+                            &lt;bean class=&quot;org.springframework.http.converter.json.MappingJackson2HttpMessageConverter&quot;&gt;
+                                &lt;!-- 驼峰转下划线 --&gt;
+                                &lt;property name=&quot;objectMapper&quot;&gt;
+                                    &lt;bean class=&quot;com.fasterxml.jackson.databind.ObjectMapper&quot;&gt;
+                                        &lt;property name=&quot;propertyNamingStrategy&quot;&gt;
+                                             &lt;bean class=&quot;com.fasterxml.jackson.databind.PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy&quot; /&gt;
+                                        &lt;/property&gt;
+                                     &lt;/bean&gt;
+                                &lt;/property&gt;
+                                &lt;property name=&quot;supportedMediaTypes&quot;&gt;
+                                    &lt;list&gt;
+                                        &lt;!-- &lt;value&gt;text/html;charset=UTF-8&lt;/value&gt; --&gt;
+                                        &lt;value&gt;application/json; charset=UTF-8&lt;/value&gt;
+                                    &lt;/list&gt;
+                                &lt;/property&gt;
+                                &lt;!-- 驼峰转下划线 --&gt;
+                            
+                            &lt;/bean&gt;
+                            
+                            &lt;bean class=&quot;org.springframework.http.converter.FormHttpMessageConverter&quot;/&gt;
+                     &lt;/list&gt;
+              &lt;/property&gt;
+       &lt;/bean&gt;
+</code></pre>
+
+<p>对于返回的结果，会将后端的userName，转化为前端的user_name</p>
+
+<h2>2. formdata</h2>
+
+<p>后端接收formdata的时候，可以通过重命名来确定接收的变量在后端的名称，如下，前端传过来的user_name会被放到userName变量</p>
+
+<pre><code class="language-java">@RequestParam(value = &quot;user_Name&quot;, required = true) String userName
+</code></pre>
+
+<p>请求数据   <code>formdata</code>:  user_name=xxxx</p>
+
+<h2>3. RequestBody接收json数据</h2>
+
+<p>除了formdata，一般的后台还接收json格式的数据</p>
+
+<p>后端接收参数的方法如下(其中user有私有属性：id,userName,password,name,registerDate)</p>
+
+<pre><code class="language-java">@RequestBody User u
+</code></pre>
+
+<p>请求参数</p>
+
+<pre><code class="language-json">{
+    &quot;id&quot;: 1,
+    &quot;user_name&quot;: &quot;dapan&quot;,
+    &quot;password&quot;: &quot;123&quot;,
+    &quot;name&quot;: &quot;dapan&quot;,
+    &quot;register_date&quot;: &quot;1993-10-22&quot;
+  }
+</code></pre>
+
+<p>注意的是: 1) 在配置了峰驼转下划线后，请求体中的参数必须满足该规则(也就是user_name =&gt; userName)；2) 参数只能少，不能多，少的置成null，多则出400错误</p>
+
+<h1>Spring MVC AOP 自定义注解</h1>
+
+<p>springMVC 提供AOP来拦截请求</p>
+
+<p>在本文中，我们通过AOP来检查用户类型；用户类型分：普通用户和管理员</p>
+
+<p>所以我们先定义一个annotation(如下)</p>
+
+<pre><code class="language-java">@Retention(RetentionPolicy.RUNTIME)  
+@Target({ElementType.METHOD,ElementType.TYPE})  
+@Documented  
+//最高优先级  
+@Order(Ordered.HIGHEST_PRECEDENCE)  
+public @interface CheckUser {
+    UserType type() default UserType.User; //UserType 是一个含有User和Admin的枚举类型
+
+}
+</code></pre>
+
+<p>然后定义该annotation对应的切片(如下)</p>
+
+<pre><code class="language-java">//before： 函数执行前所需要的操作
+@Before(&quot;@annotation(com.demo.annotation.CheckUser) &amp;&amp; (args(request,response,..) || args(..,request,response))&quot;) 
+     public void beforeExec(JoinPoint joinPoint,HttpServletRequest request,HttpServletResponse response) {
+         MethodSignature signature = (MethodSignature) joinPoint.getSignature();  
+         Method method = signature.getMethod();  
+         Class&lt;?&gt; classz = joinPoint.getTarget().getClass();
+         
+         CheckUser checkUser = getCheckUser(method,classz);//通过反射，获取注解里面UserType的值
+         
+
+         String token = request.getParameter(&quot;token&quot;);//获取请求体里面的令牌
+         User user =  SessionManager.getSession(token);//系统中存储&lt;令牌，用户&gt;键值对的管理器
+         if (user != null) {
+             //在这里可以检查用户类型，是否为注解所要求的用户类型
+         } else {
+             //用户令牌无效的情况下，将response截断，并且返回{&quot;code&quot;:1}(如果不截断，则会根据执行controller后，返回controller定义的类型)
+             try {
+                 response.reset();
+                 response.setStatus(200);
+                 response.setContentType(&quot;application/json;charset=UTF-8&quot;);
+                 OutputStream out = response.getOutputStream();
+                 out.write(&quot;{\&quot;code\&quot;:1}&quot;.getBytes());
+                 out.flush();
+                 out.close();
+
+             } catch (Exception e) {
+                 e.printStackTrace();
+             }
+         }
+     }
+</code></pre>
+
+<p>对应的控制器如下，可以看出当调用getUserList接口的时候，首先会根据自定义的注解CheckUser，去执行相应的aspcet中的(beforeExec)，在aspect中检查用户的权限，根据用户权限来提前截断，或者继续执行</p>
+
+<pre><code class="language-java">    @CheckUser(type=UserType.Admin)
+    @RequestMapping(value=&quot;getUserList&quot;, method = RequestMethod.GET)
+    @ResponseBody
+    public DataWrapper&lt;list&lt;User&gt;&gt; getUserList(
+            HttpServletRequest request,
+            HttpServletResponse response,
+            @RequestParam(value = &quot;token&quot;,required = true) String token
+            ) {
+        
+        return  userService.getUserList(token);
+    }
+</code></pre>
+
+<p>备注: 根据controller里面@CheckUser可知，在切片中，变量checkUser的值是UserType.Admin</p>
+
+<p>代码在我的git上
+<a href="https://github.com/PanruifengWawa/SpringMVC-new">github</a></p>
+</article>
+                <section class="author">
+                <div class="intro">
+                    <div class="ds-thread" data-thread-key="1490101200" data-title="springMVC自定义注解AOP以及请求响应参数格式" data-url="http://www.panruifeng.com/blog/springmvc-aop-underline.html"></div>
+                    <script type="text/javascript">
+                        var duoshuoQuery = {short_name:"panruifeng"};
+                        (function() {
+                            var ds = document.createElement('script');
+                            ds.type = 'text/javascript';ds.async = true;
+                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                            ds.charset = 'UTF-8';
+                            (document.getElementsByTagName('head')[0] 
+                                || document.getElementsByTagName('body')[0]).appendChild(ds);
+                        })();
+                    </script>
+
+
+                </div>
+                </section>
+                <section class="author">
+                    <div class="avatar" style="background-image: url(/blog/images/avatar.jpeg);"></div>
+                    <a class="name" href="/blog/about.me.html">潘瑞峰</a>
+                    <div class="intro">五花马，千金裘，呼儿将出换美酒，与尔同销万古愁。</div>
+                </section>
+                <section class="recommend">
+                    
+                    <section class="nav prev more">
+                        <div class="head">上篇文章</div>
+                        <a class="link" href="/blog/java-string.html">java学习笔记 String、StringBuilder、StringBuffer</a>
+                    </section>
+                    
+                    
+                    <section class="nav next more">
+                        <div class="head">下篇文章</div>
+                        <a class="link" href="/blog/copy.html">JAVA深拷贝和浅拷贝</a>
+                    </section>
+                    
+                </section>
+                
+    <section id="disqus_thread"></section>
+    <script type="text/javascript">
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//username.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+            </article>
+        </article>
+        <footer class="footer">
+    <span class="copyright">
+        潘瑞峰的个人博客 ©
+        <script type="text/javascript">
+            document.write(new Date().getFullYear());
+        </script>
+    </span>
+    <span class="publish">Powered by <a href="http://www.chole.io/" target="_blank">Ink</a></span>
+</footer>
+
+        <script src="/blog/bundle/index.js"></script>
+    </body>
+</html>

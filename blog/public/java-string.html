@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="google" value="notranslate">
+<meta name="robots" content="index,follow">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="潘瑞峰的个人博客">
+<meta name="twitter:description" content="走走停停看看写写">
+<meta name="twitter:image:src" content="http://www.panruifeng.com/blog/blog/images/avatar.jpeg">
+
+<meta property="og:url" content="http://www.panruifeng.com/blog">
+<meta property="og:title" content="潘瑞峰的个人博客">
+<meta property="og:description" content="走走停停看看写写">
+<meta property="og:site_name" content="潘瑞峰的个人博客">
+<meta property="og:image" content="http://www.panruifeng.com/blog/blog/images/avatar.jpeg">
+<meta property="og:type" content="website">
+<meta name="robots" content="noodp">
+
+<meta itemprop="name" content="潘瑞峰的个人博客">
+<meta itemprop="description" content="走走停停看看写写">
+<meta itemprop="image" content="http://www.panruifeng.com/blog/blog/images/avatar.jpeg">
+
+<link rel="canonical" href="http://www.panruifeng.com/blog">
+
+<link rel="shortcut icon" href="/blog/favicon.png">
+<link rel="apple-itouch-icon" href="/blog/favicon.png">
+<link rel="stylesheet" href="/blog/bundle/index.css">
+<script type="text/javascript">
+    var timeSinceLang = {
+        year: '年前',
+        month: '个月前',
+        day: '天前',
+        hour: '小时前',
+        minute: '分钟前',
+        second: '秒前'
+    };
+    var root = '\/blog';
+</script>
+
+
+        <meta name="keywords" content="java,String,StringBuilder,StringBuffer,">
+        <meta name="description" content="java学习笔记 String、StringBuilder、StringBuffer">
+        <meta name="author" content="潘瑞峰">
+        <title>java学习笔记 String、StringBuilder、StringBuffer</title>
+    </head>
+    <body>
+        <article class="container">
+            <header class="header-wrap">
+  <a class="index" href="/blog/">
+    <img class="logo" src="/blog/images/avatar.jpeg" />
+    潘瑞峰的个人博客
+  </a>
+  <ul class="menu">
+      <li class="menu-item"><a href="/blog/archive.html">归档</a></li>
+      <li class="menu-item"><a href="/blog/tag.html">标签</a></li>
+      <li class="menu-item"><a href="/blog/about.me.html">作者</a></li>
+      <li class="menu-item"><a href="/blog/atom.xml">订阅</a></li>
+  </ul>
+</header>
+
+            <article class="main article">
+                <h1 class="title">java学习笔记 String、StringBuilder、StringBuffer</h1>
+                <section class="info">
+                    <span class="avatar" style="background-image: url(/blog/images/avatar.jpeg);"></span>
+                    <a class="name" href="/blog/about.me.html">潘瑞峰</a>
+                    
+                    <span class="date" data-time="1497018600"><span class="from"></span></span>
+                    
+                    <span class="tags"><a class="tag" href="/blog/tag/java/index.html">java</a><a class="tag" href="/blog/tag/String/index.html">String</a><a class="tag" href="/blog/tag/StringBuilder/index.html">StringBuilder</a><a class="tag" href="/blog/tag/StringBuffer/index.html">StringBuffer</a></span>
+                </section>
+                <article class="content"><h2>常用语法差异</h2>
+
+<ol>
+<li><p><strong>初始化</strong></p>
+
+<ul>
+<li>String : String的初始化可以通过<code>String string = new String(&quot;a&quot;)</code> 或 <code>String string = &quot;a&quot;</code> 实现，它们是有差别的，在这里就不再阐述了</li>
+<li>StringBuilder : 只能通过<code>StringBuilder stringBuilder = new StringBuilder(&quot;a&quot;)</code>初始化</li>
+<li>StringBuffer :  只能通过<code>StringBuffer stringBuffer = new StringBuffer(&quot;a&quot;)</code>初始化</li>
+</ul></li>
+
+<li><p><strong>字符串修改</strong></p>
+
+<ul>
+<li>String : String是不可变的，从它的定义可见</li>
+</ul>
+
+<pre><code class="language-java">public final class String implements java.io.Serializable, Comparable&lt;String&gt;, CharSequence {
+     private final char value[];
+     //......
+}
+</code></pre>
+
+<p>所以它每次修改都是创建了一个新的字符串。他的修改过程: 首先创建一个StringBuffer，然后调用StringBuffer的<code>append()</code>方法，最后调用StringBuffer的<code>toString()</code>方法返回</p>
+
+<pre><code class="language-java">String s = &quot;hello&quot;;
+s += &quot;world&quot;;
+//等价于
+StringBuffer sb = new StringBuffer(&quot;hello&quot;);
+sb.append(&quot;world&quot;);
+s = sb.toString();
+</code></pre>
+
+<ul>
+<li>StringBuilder和StringBuffer : 他们是调用<code>append()</code>方法</li>
+</ul>
+
+<pre><code class="language-java">//StringBuffer
+@Override
+public synchronized StringBuffer append(String str) {
+    toStringCache = null;
+    super.append(str); //它的父类是AbstractStringBuilder
+    return this;
+}
+
+//StringBuilder
+@Override
+public StringBuilder append(String str) {
+    super.append(str); //它的父类是AbstractStringBuilder
+    return this;
+}
+//他们的操作很相似，差异在于StringBuffer做了同步，是线程安全的
+
+</code></pre></li>
+</ol>
+
+<h2>效率差异</h2>
+
+<p>我做了一个小实验，分别对String、StringBuffer和StringBuilder修改10000次，查看他们花费的时间。</p>
+
+<pre><code class="language-java">    public static void main(String[] args) {
+        testString();
+        testStringBuffer();
+        testStringBuilder();
+    }
+    
+    public static void testString() {
+        String a = &quot;hello&quot;;
+        String b = &quot;world&quot;;
+        long start = System.currentTimeMillis();
+        for(int i = 0 ; i &lt; 10000 ; i++) {
+            a += b;
+        }
+        long end = System.currentTimeMillis();
+        
+        System.out.println(&quot;String: &quot; + (end - start));
+    }
+    
+    public static void testStringBuffer() {
+        StringBuffer a = new StringBuffer(&quot;hello&quot;);
+        String b = &quot;world&quot;;
+        long start = System.currentTimeMillis();
+        for(int i = 0 ; i &lt; 10000 ; i++) {
+            a.append(b);
+        }
+        long end = System.currentTimeMillis();
+        
+        System.out.println(&quot;StringBuffer: &quot; + (end - start));
+    }
+    
+    public static void testStringBuilder() {
+        StringBuilder a = new StringBuilder(&quot;hello&quot;);
+        String b = &quot;world&quot;;
+        long start = System.currentTimeMillis();
+        for(int i = 0 ; i &lt; 10000 ; i++) {
+            a.append(b);
+        }
+        long end = System.currentTimeMillis();
+        
+        System.out.println(&quot;StringBuilder: &quot; + (end - start));  
+    }
+</code></pre>
+
+<p>它的输出结果:</p>
+
+<pre><code class="language-out">String: 236
+StringBuffer: 1
+StringBuilder: 1
+</code></pre>
+
+<p>不难想到，String每次需要创建新的对象，那么它所花费的时间比如是最多的。顺便说一下，这个实验是在2.2 GHz Intel Core i7、16 GB 1600 MHz DDR3的macOS操作系统上做的。</p>
+
+<h2>安全差异</h2>
+
+<ul>
+<li>String是不可变，所以String是线程安全的，因为多个线程同时修改一个String的时候，都是创建了新的字符串</li>
+
+<li><p>StringBuffer是线程安全的，以<code>append()</code>方法为例，它在这个方法上面加了同步，而且它用toStringCache来做缓存，避免了同时读写导致的错误，所以它也是安全的</p>
+
+<pre><code class="language-java"> @Override
+public synchronized StringBuffer append(String str) {
+    toStringCache = null;
+    super.append(str);
+    return this;
+}
+
+@Override
+public synchronized String toString() {
+    if (toStringCache == null) {
+        toStringCache = Arrays.copyOfRange(value, 0, count);
+    }
+    return new String(toStringCache, true);
+}
+</code></pre></li>
+
+<li><p>StringBuilder不是线程安全的，它没有同步也没有缓存</p>
+
+<pre><code class="language-java">@Override
+public StringBuilder append(String str) {
+    super.append(str);
+    return this;
+}
+</code></pre></li>
+</ul>
+
+<h3>总结</h3>
+
+<ul>
+<li>效率: StringBuilder &gt; StringBuffer &gt; String</li>
+<li>在使用的时候，如果操作的数据量比较小，应该优先使用String</li>
+<li>如果是在单线程下大量操作数据，应该优先使用StringBuilder</li>
+<li>如果是在多线程下大量操作数据，应该优先使用StringBuffer</li>
+<li>乱入: 一个类只能继承一个类，一个类能实现多个接口，一个接口能继承多个接口</li>
+</ul>
+</article>
+                <section class="author">
+                <div class="intro">
+                    <div class="ds-thread" data-thread-key="1497018600" data-title="java学习笔记 String、StringBuilder、StringBuffer" data-url="http://www.panruifeng.com/blog/java-string.html"></div>
+                    <script type="text/javascript">
+                        var duoshuoQuery = {short_name:"panruifeng"};
+                        (function() {
+                            var ds = document.createElement('script');
+                            ds.type = 'text/javascript';ds.async = true;
+                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                            ds.charset = 'UTF-8';
+                            (document.getElementsByTagName('head')[0] 
+                                || document.getElementsByTagName('body')[0]).appendChild(ds);
+                        })();
+                    </script>
+
+
+                </div>
+                </section>
+                <section class="author">
+                    <div class="avatar" style="background-image: url(/blog/images/avatar.jpeg);"></div>
+                    <a class="name" href="/blog/about.me.html">潘瑞峰</a>
+                    <div class="intro">五花马，千金裘，呼儿将出换美酒，与尔同销万古愁。</div>
+                </section>
+                <section class="recommend">
+                    
+                    
+                    <section class="nav next">
+                        <div class="head">下篇文章</div>
+                        <a class="link" href="/blog/springmvc-aop-underline.html">springMVC自定义注解AOP以及请求响应参数格式</a>
+                    </section>
+                    
+                </section>
+                
+    <section id="disqus_thread"></section>
+    <script type="text/javascript">
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//username.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+
+            </article>
+        </article>
+        <footer class="footer">
+    <span class="copyright">
+        潘瑞峰的个人博客 ©
+        <script type="text/javascript">
+            document.write(new Date().getFullYear());
+        </script>
+    </span>
+    <span class="publish">Powered by <a href="http://www.chole.io/" target="_blank">Ink</a></span>
+</footer>
+
+        <script src="/blog/bundle/index.js"></script>
+    </body>
+</html>
