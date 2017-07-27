@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>潘瑞峰的个人博客</title>
   <id>http://www.panruifeng.com/blog</id>
-  <updated>2017-06-10T00:06:47+08:00</updated>
+  <updated>2017-07-27T23:10:36+08:00</updated>
   <subtitle>走走停停看看写写</subtitle>
   <link href="http://www.panruifeng.com/blog"></link>
   <author>
     <name>潘瑞峰的个人博客</name>
   </author>
+  <entry>
+    <title>mysql主从复制</title>
+    <updated>2017-07-27T22:00:00+08:00</updated>
+    <id>tag:www.panruifeng.com,2017-07-27:/blog/springmvc-mysql-master-slave.html</id>
+    <content type="html">&lt;p&gt;mysql自带主从复制，只要正确配置就可以使用，很简单。&lt;/p&gt;&#xA;</content>
+    <link href="http://www.panruifeng.com/blog/springmvc-mysql-master-slave.html"></link>
+    <author>
+      <name>潘瑞峰</name>
+    </author>
+  </entry>
   <entry>
     <title>java学习笔记 String、StringBuilder、StringBuffer</title>
     <updated>2017-06-09T22:30:00+08:00</updated>
