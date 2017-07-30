@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>潘瑞峰的个人博客</title>
   <id>http://www.panruifeng.com/blog</id>
-  <updated>2017-07-27T23:10:36+08:00</updated>
+  <updated>2017-07-30T18:45:46+08:00</updated>
   <subtitle>走走停停看看写写</subtitle>
   <link href="http://www.panruifeng.com/blog"></link>
   <author>
     <name>潘瑞峰的个人博客</name>
   </author>
+  <entry>
+    <title>mysql全文索引</title>
+    <updated>2017-07-30T17:00:00+08:00</updated>
+    <id>tag:www.panruifeng.com,2017-07-30:/blog/mysql-full-text.html</id>
+    <content type="html">&lt;p&gt;mysql提供一种文本索引的方式，它的功能很像like，但是由于是通过索引检索的，所以速度很快&lt;/p&gt;&#xA;</content>
+    <link href="http://www.panruifeng.com/blog/mysql-full-text.html"></link>
+    <author>
+      <name>潘瑞峰</name>
+    </author>
+  </entry>
   <entry>
     <title>mysql主从复制</title>
     <updated>2017-07-27T22:00:00+08:00</updated>
