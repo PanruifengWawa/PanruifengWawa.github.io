@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>潘瑞峰的个人博客</title>
   <id>http://www.panruifeng.com/blog</id>
-  <updated>2017-07-30T18:45:46+08:00</updated>
+  <updated>2017-10-26T14:30:48+08:00</updated>
   <subtitle>走走停停看看写写</subtitle>
   <link href="http://www.panruifeng.com/blog"></link>
   <author>
     <name>潘瑞峰的个人博客</name>
   </author>
+  <entry>
+    <title>Java JNI</title>
+    <updated>2017-10-26T15:00:00+08:00</updated>
+    <id>tag:www.panruifeng.com,2017-10-26:/blog/java_jni.html</id>
+    <content type="html">&lt;p&gt;Java JNI提供了Java调用C，C++的方式&lt;/p&gt;&#xA;</content>
+    <link href="http://www.panruifeng.com/blog/java_jni.html"></link>
+    <author>
+      <name>潘瑞峰</name>
+    </author>
+  </entry>
   <entry>
     <title>mysql全文索引</title>
     <updated>2017-07-30T17:00:00+08:00</updated>
