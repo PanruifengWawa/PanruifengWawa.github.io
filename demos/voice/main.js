@@ -25,6 +25,7 @@
                }else{
                    showError("请先录音")
                }
+               recorder.clear();
             };  
 
             function downloadRecord(record){
