@@ -38,7 +38,7 @@
                 formdata.append('data',record);
                 console.log(formdata);
                 $.ajax({
-    url: 'http://116.62.228.3:8089/adv/api/test/upload',
+    url: 'https://123.56.220.72:8443/api/test/upload',
     type: 'POST',
     cache: false,
     data: formdata,
