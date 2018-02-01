@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
   <title>潘瑞峰的个人博客</title>
   <id>http://www.panruifeng.com/blog</id>
-  <updated>2018-01-17T14:03:02+08:00</updated>
+  <updated>2018-02-01T18:27:37+08:00</updated>
   <subtitle>走走停停看看写写</subtitle>
   <link href="http://www.panruifeng.com/blog"></link>
   <author>
     <name>潘瑞峰的个人博客</name>
   </author>
+  <entry>
+    <title>Spring中使用Redis缓存</title>
+    <updated>2018-02-01T16:00:00+08:00</updated>
+    <id>tag:www.panruifeng.com,2018-02-01:/blog/spring-redis.html</id>
+    <content type="html">&lt;p&gt;当用户达到一定数量的时候，服务器往往会出现卡顿的现象，这时候需要一些策略来解决这些问题，常见的有代码复查、服务器负载均衡、数据库读写分离、数据库索引、分布式数据库等等。个人觉得，其中数据库部分的优化是最难的，因为代码质量问题是可以通过review修改的，服务器负载问题可以通过多设置几台实例来解决（一般情况下，多台服务器之间是独立的，很少有通信问题），但是数据库如果达到瓶颈，就不是单纯的多假设数据库服务器了，因为数据库之间需要同步，这就会出现延迟、弱同步的问题。分数据库、分表是一种方法，但这种需要很好地设计，不然在后期的合并需求中，可能会出现问题。因此我通常使用缓存数据库来避免对数据库频繁地读。&lt;/p&gt;&#xA;</content>
+    <link href="http://www.panruifeng.com/blog/spring-redis.html"></link>
+    <author>
+      <name>潘瑞峰</name>
+    </author>
+  </entry>
   <entry>
     <title>Java JNI</title>
     <updated>2017-10-26T15:00:00+08:00</updated>
@@ -93,16 +103,6 @@
     <id>tag:www.panruifeng.com,2017-02-17:/blog/springmvc-mysql-gibberish.html</id>
     <content type="html">&lt;p&gt;在使用springMVC + Hibernate时，有时会出现中文乱码。一般中文乱码出现在web页面，后端服务器和数据库中，而其原因有很多。&lt;/p&gt;&#xA;</content>
     <link href="http://www.panruifeng.com/blog/springmvc-mysql-gibberish.html"></link>
-    <author>
-      <name>潘瑞峰</name>
-    </author>
-  </entry>
-  <entry>
-    <title>github个人主页搭建</title>
-    <updated>2017-02-14T15:00:00+08:00</updated>
-    <id>tag:www.panruifeng.com,2017-02-14:/blog/github-personal-website.html</id>
-    <content type="html">&lt;p&gt;github除了提供分布式代码管理，还提供了个人主页的搭建。&lt;/p&gt;&#xA;</content>
-    <link href="http://www.panruifeng.com/blog/github-personal-website.html"></link>
     <author>
       <name>潘瑞峰</name>
     </author>

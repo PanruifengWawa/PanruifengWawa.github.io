@@ -80,6 +80,23 @@
                 <ul class="article-list">
                     
                     <li class="article">
+                        <a class="title" href="/blog/spring-redis.html">Spring中使用Redis缓存</a>
+                        
+                        <section class="preview content"><p>当用户达到一定数量的时候，服务器往往会出现卡顿的现象，这时候需要一些策略来解决这些问题，常见的有代码复查、服务器负载均衡、数据库读写分离、数据库索引、分布式数据库等等。个人觉得，其中数据库部分的优化是最难的，因为代码质量问题是可以通过review修改的，服务器负载问题可以通过多设置几台实例来解决（一般情况下，多台服务器之间是独立的，很少有通信问题），但是数据库如果达到瓶颈，就不是单纯的多假设数据库服务器了，因为数据库之间需要同步，这就会出现延迟、弱同步的问题。分数据库、分表是一种方法，但这种需要很好地设计，不然在后期的合并需求中，可能会出现问题。因此我通常使用缓存数据库来避免对数据库频繁地读。</p>
+</section>
+                        <section class="info">
+                            <span class="avatar" style="background-image: url(/blog/images/avatar.jpeg);"></span>
+                            <a class="name" href="/blog/about.me.html">潘瑞峰</a>
+                            
+                            <span class="date" data-time="1517472000"><span class="from"></span></span>
+                            
+                            <span class="tags">
+                            <a class="tag" href="/blog/tag/redis/index.html">redis</a><a class="tag" href="/blog/tag/cache/index.html">cache</a>
+                            </span>
+                        </section>
+                    </li>
+                    
+                    <li class="article">
                         <a class="title" href="/blog/java_jni.html">Java JNI</a>
                         
                         <section class="preview content"><p>Java JNI提供了Java调用C，C++的方式</p>
@@ -234,28 +251,11 @@
                         </section>
                     </li>
                     
-                    <li class="article">
-                        <a class="title" href="/blog/github-personal-website.html">github个人主页搭建</a>
-                        
-                        <section class="preview content"><p>github除了提供分布式代码管理，还提供了个人主页的搭建。</p>
-</section>
-                        <section class="info">
-                            <span class="avatar" style="background-image: url(/blog/images/avatar.jpeg);"></span>
-                            <a class="name" href="/blog/about.me.html">潘瑞峰</a>
-                            
-                            <span class="date" data-time="1487055600"><span class="from"></span></span>
-                            
-                            <span class="tags">
-                            <a class="tag" href="/blog/tag/%e7%bd%91%e7%ab%99%e6%90%ad%e5%bb%ba/index.html">网站搭建</a><a class="tag" href="/blog/tag/%e4%b8%bb%e9%a1%b5%e6%90%ad%e5%bb%ba/index.html">主页搭建</a><a class="tag" href="/blog/tag/%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/index.html">博客搭建</a>
-                            </span>
-                        </section>
-                    </li>
-                    
                 </ul>
                 <section class="page-nav">
                     
-                    
-                    
+                    <span class="nav">1 / 2</span>
+                    <a class="next" href="/blog/page2.html">下一页</a>
                 </section>
             </article>
         </article>
