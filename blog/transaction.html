@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="google" value="notranslate">
+<meta name="robots" content="index,follow">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="潘瑞峰的个人博客">
+<meta name="twitter:description" content="走走停停看看写写">
+<meta name="twitter:image:src" content="http://www.panruifeng.com/blog/blog/images/avatar.jpeg">
+
+<meta property="og:url" content="http://www.panruifeng.com/blog">
+<meta property="og:title" content="潘瑞峰的个人博客">
+<meta property="og:description" content="走走停停看看写写">
+<meta property="og:site_name" content="潘瑞峰的个人博客">
+<meta property="og:image" content="http://www.panruifeng.com/blog/blog/images/avatar.jpeg">
+<meta property="og:type" content="website">
+<meta name="robots" content="noodp">
+
+<meta itemprop="name" content="潘瑞峰的个人博客">
+<meta itemprop="description" content="走走停停看看写写">
+<meta itemprop="image" content="http://www.panruifeng.com/blog/blog/images/avatar.jpeg">
+
+<link rel="canonical" href="http://www.panruifeng.com/blog">
+
+<link rel="shortcut icon" href="/blog/favicon.png">
+<link rel="apple-itouch-icon" href="/blog/favicon.png">
+<link rel="stylesheet" href="/blog/bundle/index.css">
+<script type="text/javascript">
+    var timeSinceLang = {
+        year: '年前',
+        month: '个月前',
+        day: '天前',
+        hour: '小时前',
+        minute: '分钟前',
+        second: '秒前'
+    };
+    var root = '\/blog';
+</script>
+
+
+        <meta name="keywords" content="mysql,事务,transaction,">
+        <meta name="description" content="数据库事务">
+        <meta name="author" content="潘瑞峰">
+        <title>数据库事务</title>
+    </head>
+    <body>
+        <article class="container">
+            <header class="header-wrap">
+  <a class="index" href="/blog/">
+    <img class="logo" src="/blog/images/avatar.jpeg" />
+    潘瑞峰的个人博客
+  </a>
+  <ul class="menu">
+      <li class="menu-item"><a href="/blog/archive.html">归档</a></li>
+      <li class="menu-item"><a href="/blog/tag.html">标签</a></li>
+      <li class="menu-item"><a href="/blog/about.me.html">作者</a></li>
+      <li class="menu-item"><a href="/blog/atom.xml">订阅</a></li>
+  </ul>
+</header>
+
+            <article class="main article">
+                <h1 class="title">数据库事务</h1>
+                <section class="info">
+                    <span class="avatar" style="background-image: url(/blog/images/avatar.jpeg);"></span>
+                    <a class="name" href="/blog/about.me.html">潘瑞峰</a>
+                    
+                    <span class="date" data-time="1522656000"><span class="from"></span></span>
+                    
+                    <span class="tags"><a class="tag" href="/blog/tag/mysql/index.html">mysql</a><a class="tag" href="/blog/tag/%e4%ba%8b%e5%8a%a1/index.html">事务</a><a class="tag" href="/blog/tag/transaction/index.html">transaction</a></span>
+                </section>
+                <article class="content"><h2>事务</h2>
+
+<p>数据库事务是指作为单个逻辑工作单元执行的一系列操作，要么完全地执行，要么完全地不执行。它的特性有原子性、一致性、隔离性(read uncommitted, read committed, repeatable read and serializable)和持久性。这些特性在网上或者书本上有很详细的介绍，这里就不一一介绍了。</p>
+
+<h2>嵌套事务</h2>
+
+<p>本文主要想探索数据库中嵌套事务相关的问题，以mysql和InnoDB为载体。</p>
+
+<h3>实验</h3>
+
+<pre><code>set autocommit=0
+
+-- 场景1
+start transaction;
+    insert into test(id,name) values(1,'dog');
+    start transaction;
+        insert into test(id,name) values(2,'cat');
+    commit;
+rollback;
+select * from test;
++----+------+
+| id | name |
++----+------+
+|  1 | dog  |
+|  2 | cat  |
++----+------+
+
+
+-- 场景2
+delete from test;
+start transaction;
+    insert into test(id,name) values(1,'dog');
+    start transaction;
+        insert into test(id,name) values(2,'cat');
+    rollback;
+commit;
+select * from test;
++----+------+
+| id | name |
++----+------+
+|  1 | dog  |
++----+------+
+</code></pre>
+
+<p>场景2似乎是正确的，外层的事务被提交了，而内层的事务被回滚了。但是在场景1中，并没有回滚外层事务。</p>
+
+<h3>结论</h3>
+
+<p>在mysql的<a href="https://dev.mysql.com/doc/internals/en/transactions-historical-note.html">“Historical Note”</a>:</p>
+
+<pre><code>transactions could be arbitrarily nested, but when the parent transaction was committed or aborted, all its child (nested) transactions were committed or aborted as well. Commit of a nested transaction, in turn, made its changes visible, but not durable: it destroyed the nested transaction, so all the nested transaction's changes would become visible to the parent and to other currently active nested transactions of the same parent.
+</code></pre>
+
+<p>mysql是支持嵌套事务的，而且嵌套事务是会根据parent transaction的状态迁移的。</p>
+
+<p>那为什么在实验中并没有出现上文描述的情况呢？那是因为<a href="https://dev.mysql.com/doc/internals/en/transactions-current-situation.html">“Current Situation”</a>:</p>
+
+<pre><code>the DDL statement always commits the current transaction (if any) before proceeding
+</code></pre>
+
+<p>所以当遇到DDL的时候，会自动提交。网上有人总结了一些会自动提交的语句，如下：</p>
+
+<pre><code>ALTER FUNCTION    
+ALTER PROCEDURE    
+ALTER TABLE    
+BEGIN    
+CREATE DATABASE    
+CREATE FUNCTION    
+CREATE INDEX    
+CREATE PROCEDURE    
+CREATE TABLE    
+DROP DATABASE    
+DROP FUNCTION    
+DROP INDEX    
+DROP PROCEDURE    
+DROP TABLE    
+UNLOCK TABLES    
+LOAD MASTER DATA    
+LOCK TABLES    
+RENAME TABLE    
+TRUNCATE TABLE    
+SET AUTOCOMMIT=1    
+START TRANSACTION   
+</code></pre>
+
+<h2>Savepoint</h2>
+
+<p>尽量不要用嵌套事务，一般来说如果需要实现局部回滚，会使用savepoint。</p>
+
+<pre><code>-- 场景1 回滚第一条语句
+delete from test;
+start transaction;
+    savepoint savepoint1;
+    insert into test(id,name) values(1,'dog');
+    rollback to savepoint savepoint1;
+    insert into test(id,name) values(2,'cat');
+commit;
+select * from test;
++----+------+
+| id | name |
++----+------+
+|  2 | cat  |
++----+------+
+
+
+-- 场景2 回滚第二条语句
+delete from test;
+start transaction;
+    insert into test(id,name) values(1,'dog');
+    savepoint savepoint1;
+    insert into test(id,name) values(2,'cat');
+    rollback to savepoint savepoint1;
+commit;
+select * from test;
++----+------+
+| id | name |
++----+------+
+|  1 | dog  |
++----+------+
+</code></pre>
+
+<p>可以看出，通过savepoint，是可以实现局部回滚的。</p>
+</article>
+                <section class="author">
+                <div class="intro">
+                    <div class="ds-thread" data-thread-key="1522656000" data-title="数据库事务" data-url="http://www.panruifeng.com/blog/transaction.html"></div>
+                   
+
+
+                </div>
+                </section>
+                <section class="author">
+                    <div class="avatar" style="background-image: url(/blog/images/avatar.jpeg);"></div>
+                    <a class="name" href="/blog/about.me.html">潘瑞峰</a>
+                    <div class="intro">五花马，千金裘，呼儿将出换美酒，与尔同销万古愁。</div>
+                </section>
+                <section class="recommend">
+                    
+                    
+                    <section class="nav next">
+                        <div class="head">下篇文章</div>
+                        <a class="link" href="/blog/spring-redis.html">Spring中使用Redis缓存</a>
+                    </section>
+                    
+                </section>
+                
+  
+
+
+            </article>
+        </article>
+        <footer class="footer">
+    <span class="copyright">
+        潘瑞峰的个人博客 ©
+        <script type="text/javascript">
+            document.write(new Date().getFullYear());
+        </script>
+    </span>
+    <span class="publish">Powered by <a href="http://www.chole.io/" target="_blank">Ink</a></span>
+</footer>
+
+        <script src="/blog/bundle/index.js"></script>
+    </body>
+</html>
