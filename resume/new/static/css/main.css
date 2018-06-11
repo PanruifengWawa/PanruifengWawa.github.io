@@ -1,0 +1,102 @@
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 60%;
+  height: 100%;
+  margin: 40px auto;
+}
+
+body {
+  background: #EEEEEE;
+  overflow-x: hidden;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+}
+div, table td{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+}
+a:link {
+  text-decoration: none;
+  color: white;
+}
+a:visited {
+  color: white;
+}
+a:hover,a:active {
+  color: blue;
+}
+div.resume {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 4px #aaa;
+  -webkit-box-shadow: 2px 2px 4px #aaa;
+  height: 800px;
+}
+div.resume div.left {
+  width: 30%;
+  float: left;
+  background: #254665;
+  height: 100%;
+}
+div.resume div.left #person {
+  width: 50%;
+  height: 15%;
+  margin: 15% auto;
+}
+div.resume div.left #person img { 
+  width: 100%;
+  height: 100%;
+}
+div.resume div.left .info {
+  width: 80%;
+  margin: 5% auto;
+  color: white;
+}
+div.resume div.left .info i {
+  width: 16px;
+  height: 16px;
+}
+div.resume div.left .info span.info_spans {
+  margin-left: 10px;
+}
+div.resume div.right {
+  width: 70%;
+  float: left;
+  height: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding: 5%;
+}
+div.splitLine {
+  border: 0.5px solid #254665;
+}
+div.right div.intro {
+  margin-top: 6%;
+  width: 100%;
+}
+div.right div.intro h3.title {
+  color: #254665;
+}
+
+
+div.right div.intro table {
+  width: 100%;
+  table-layout: fixed;
+  text-align: center;
+}
+
+div.right div.intro table td.time {
+  width: 14%;
+}
+div.right div.intro table td.company {
+  width: 20%;
+}
+
+
