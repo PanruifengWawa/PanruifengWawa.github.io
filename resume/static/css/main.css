@@ -10,10 +10,12 @@
 body {
   background: #EEEEEE;
   overflow-x: hidden;
+  height: 1000px;
 }
 * {
   margin: 0px;
   padding: 0px;
+  line-height: 1.5em;
 }
 div, table td{
   white-space: nowrap;
@@ -36,7 +38,7 @@ div.resume {
   border: 1px solid #ccc;
   box-shadow: 2px 2px 4px #aaa;
   -webkit-box-shadow: 2px 2px 4px #aaa;
-  height: 800px;
+  height: 100%;
 }
 div.resume div.left {
   width: 30%;
@@ -97,6 +99,14 @@ div.right div.intro table td.time {
 }
 div.right div.intro table td.company {
   width: 20%;
+}
+div.right div.intro ul {
+  list-style: square inside;
+  margin-left: 5%;
+  white-space: normal;
+}
+div.right div.intro ul li {
+  margin-top: 5px;
 }
 
 

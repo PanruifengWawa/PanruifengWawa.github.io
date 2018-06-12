@@ -17,5 +17,20 @@
 		{"name": "学习奖学金三等奖", "from": "同济大学", "date": "2015-03"},
 		{"name": "学习奖学金二等奖", "from": "同济大学", "date": "2013-09"},
 		{"name": "学习奖学金二等奖", "from": "同济大学", "date": "2014-03"}
+	],
+	"educations": [
+		{"start": "2016-09", "end": "2019-03", "school": "同济大学", "major": "软件工程", "degree": "硕士"},
+		{"start": "2012-09", "end": "2016-06", "school": "同济大学", "major": "软件工程", "degree": "学士"}
+	],
+	"languages": [
+		{"name": "CET4", "score": 545},
+		{"name": "CET6", "score": 479}
+	],
+	"skills": [
+		"熟悉JAVA开发，熟练使用Spring系列的框架，如SpringBoot，SpringMVC等",
+		"熟悉JavaScript开发，使用过如highcharts等，如本人写的两个机器学习课程demo http://www.panruifeng.com/demos/kmeans/ http://www.panruifeng.com/demos/logistic-regression/",
+		"熟悉数据库，熟悉ER图，熟练使用mysql，在工作经历的后端开发中，也包括数据库开发：ER图构建，根据ER图建表，触发器、存储过程开发等等。",
+		"熟悉linux的操作，包括一些简单的shell脚本、定时任务、日志",
+		"熟悉http、Web Service、WebSocket等网络通信"
 	]
 }
