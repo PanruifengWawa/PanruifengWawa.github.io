@@ -1,0 +1,1 @@
+define({  "name": "接口文档",  "version": "0.1.0",  "description": "后端接口文档",  "title": "后端接口文档",  "url": "https://pay.datewithmyself.cn/",  "sampleUrl": false,  "defaultVersion": "0.0.0",  "apidoc": "0.3.0",  "generator": {    "name": "apidoc",    "time": "2018-08-20T17:36:36.431Z",    "url": "http://apidocjs.com",    "version": "0.17.5"  }});
