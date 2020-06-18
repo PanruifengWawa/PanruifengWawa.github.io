@@ -6,17 +6,13 @@
 	"gitName": "PanruifengWawa",
 	"gitUrl": "https://github.com/PanruifengWawa",
 	"blogUrl": "http://www.panruifeng.com/blog",
-	"oneSentence": "一个爱好健身的码农",
+	"oneSentence": "",
 	"experiences": [
+		{"start": "2019-04", "end": "至今", "company": "摩根士丹利", "detail": "开发"},
 		{"start": "2017-06", "end": "2017-09", "company": "IBM", "detail": "银行双活系统数据复制管理与监控"},
 		{"start": "2016-10", "end": "2016-12", "company": "嘉实安装公司", "detail": "无纸化办公BIM后端网站开发"},
 		{"start": "2016-01", "end": "2016-05", "company": "平安科技", "detail": "风控项目网站后端开发"},
 		{"start": "2015-07", "end": "2015-09", "company": "IBM", "detail": "高科消费性商务分析网站后端"}
-	],
-	"awards": [
-		{"name": "学习奖学金三等奖", "from": "同济大学", "date": "2015-03"},
-		{"name": "学习奖学金二等奖", "from": "同济大学", "date": "2013-09"},
-		{"name": "学习奖学金二等奖", "from": "同济大学", "date": "2014-03"}
 	],
 	"educations": [
 		{"start": "2016-09", "end": "2019-03", "school": "同济大学", "major": "软件工程", "degree": "硕士"},
@@ -31,6 +27,7 @@
 		"熟悉JavaScript开发，使用过如highcharts等，如本人写的两个机器学习课程demo http://www.panruifeng.com/demos/kmeans/ http://www.panruifeng.com/demos/logistic-regression/",
 		"熟悉数据库，熟悉ER图，熟练使用mysql，在工作经历的后端开发中，也包括数据库开发：ER图构建，根据ER图建表，触发器、存储过程开发等等。",
 		"熟悉linux的操作，包括一些简单的shell脚本、定时任务、日志",
-		"熟悉http、Web Service、WebSocket等网络通信"
+		"熟悉http、Web Service、WebSocket等网络通信",
+		"熟悉scala"
 	]
 }
