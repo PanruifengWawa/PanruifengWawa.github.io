@@ -8,11 +8,11 @@
 	"blogUrl": "http://www.panruifeng.com/blog",
 	"oneSentence": "",
 	"experiences": [
-	    {"start": "2019-04", "end": "至今", "company": "摩根士丹利", "detail": "开发"},
-		{"start": "2017-06", "end": "2017-09", "company": "IBM", "detail": "银行双活系统数据复制管理与监控"},
-		{"start": "2016-10", "end": "2016-12", "company": "嘉实安装公司", "detail": "无纸化办公BIM后端网站开发"},
-		{"start": "2016-01", "end": "2016-05", "company": "平安科技", "detail": "风控项目网站后端开发"},
-		{"start": "2015-07", "end": "2015-09", "company": "IBM", "detail": "高科消费性商务分析网站后端"}
+	    {"start": "2019-04", "end": "至今", "company": "摩根士丹利", "detail": "1. Data Access Lay（DAL）组，负责一些辅助工具的开发，如日常的upgrade tool、backfiller、entitlement management tool，还有一些基于公司UI框架的开发工作。除了开发还有一些maintaince和support的工作，比如zookeeper，autosys的维护和jstack/jheap的简单分析"},
+		{"start": "2017-06", "end": "2017-09", "company": "IBM", "detail": "2. 银行双活系统数据复制管理与监控，主要负责测试数据生成（一个long run的小应用），rpm打包，和部署代码至AWS（包括生成数据库脚本，springboot，nignx代理等工作）"},
+		{"start": "2016-6", "end": "2017-6", "company": "外包项目", "detail": "3. 负责外包项目的后端和部署（后端和部署仅我一个人），主要有两个项目，珠宝展示网站和同济大学创业谷官网，涉及的工作：项目调研和需求分析，SpringMVC/Springboot 后端开发，数据库设计（E-R图）和开发（表、索引和存储过程），项目迁移（从windows迁移至linux）。项目成果：http://www.dwmjewelry.com/#/index，https://chuangyegu.tongji.edu.cn/"},
+		{"start": "2016-01", "end": "2016-05", "company": "平安科技", "detail": "4. 风控项目网站后端开发"},
+		{"start": "2015-07", "end": "2015-09", "company": "IBM", "detail": "5. 高科消费性商务分析网站后端"}
 	],
 	"educations": [
 		{"start": "2016-09", "end": "2019-03", "school": "同济大学", "major": "软件工程", "degree": "硕士"},

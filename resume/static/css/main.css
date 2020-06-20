@@ -10,7 +10,7 @@
 body {
   background: #EEEEEE;
   overflow-x: hidden;
-  height: 1000px;
+
 }
 * {
   margin: 0px;
@@ -25,10 +25,10 @@ div, table td{
 }
 a:link {
   text-decoration: none;
-  color: white;
+  color: black;
 }
 a:visited {
-  color: white;
+  color: black;
 }
 a:hover,a:active {
   color: blue;
@@ -43,7 +43,8 @@ div.resume {
 div.resume div.left {
   width: 30%;
   float: left;
-  background: #254665;
+  /*background: #254665;*/
+  margin-bottom: 0;
   height: 100%;
 }
 div.resume div.left #person {
@@ -58,7 +59,7 @@ div.resume div.left #person img {
 div.resume div.left .info {
   width: 80%;
   margin: 5% auto;
-  color: white;
+  color: black;
 }
 div.resume div.left .info i {
   width: 16px;
