@@ -152,6 +152,56 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "api/hospital/{id}/lastSubmitDate",
+    "title": "获取上次提交至医院的记录",
+    "name": "lastSubmitDate-get",
+    "group": "hospital",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Long",
+            "optional": false,
+            "field": "id",
+            "description": "<ul> <li>医院id (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": “2021-07-07”\n }",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian/src/main/java/com/tijian/user/controller/HospitalController.java",
+    "groupTitle": "hospital"
+  },
+  {
+    "type": "get",
     "url": "api/reservation/{id}/cancel",
     "title": "取消预约",
     "name": "reservation-cancel",
@@ -237,7 +287,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"userId\": \"L_XDDBTest01\",\n            \"name\": \"潘瑞峰\",\n            \"birthday\": \"1993-10-22\",\n            \"gender\": 1, // 0-woman, 1-man\n            \"age\": 28,\n            \"married\": 0, // 0-no, 1-yes\n            \"reservationType\": 0, // 0-家属1号, 1-家属2号, 2-员工\n            \"date\": \"2021-05-05\", //预约日期\n            \"year\": 2021,\n            \"month\": 5,\n            \"hospitalId\": 1,\n            \"examinationId\": 1,\n            \"status\": 0, //  0-normal, 1-dimission, 2-cancelling\n            \"hospital\": {\n                \"id\": 1,\n                \"name\": \"上海xx医院\",\n                \"capacity\": 0,\n                \"description\": \"描述xx\",\n                \"address\": \"xx地址\",\n                \"regionId\": 1\n            },\n            \"examination\": {\n                \"id\": 1,\n                \"name\": \"套餐1\",\n                \"price\": 100,\n                \"genderType\": 0,\n                \"enabled\": 1,\n                \"hospitalId\": 1\n            }\n        },\n        {\n            \"id\": 1,\n            \"userId\": \"L_XDDBTest01\",\n            \"name\": \"大潘\",\n            \"birthday\": \"1993-10-22\",\n            \"gender\": 1,\n            \"age\": 28,\n            \"married\": 0,\n            \"reservationType\": 2,\n            \"date\": \"2021-05-05\",\n            \"year\": 2021,\n            \"month\": 5,\n            \"hospitalId\": 1,\n            \"examinationId\": 1,\n            \"status\": 0,\n            \"hospital\": {\n                \"id\": 1,\n                \"name\": \"上海xx医院\",\n                \"capacity\": 0,\n                \"description\": \"描述xx\",\n                \"address\": \"xx地址\",\n                \"regionId\": 1\n            },\n            \"examination\": {\n                \"id\": 1,\n                \"name\": \"套餐1\",\n                \"price\": 100,\n                \"genderType\": 0,\n                \"enabled\": 1,\n                \"hospitalId\": 1\n            }\n        }\n    ]\n }",
+          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"userId\": \"L_XDDBTest01\",\n            \"name\": \"潘瑞峰\",\n            \"birthday\": \"1993-10-22\",\n            \"gender\": 1, // 0-woman, 1-man\n            \"age\": 28,\n            \"married\": 0, // 0-no, 1-yes\n            \"reservationType\": 0, // 0-家属1号, 1-家属2号, 2-员工\n            \"date\": \"2021-05-05\", //预约日期\n            \"year\": 2021,\n            \"month\": 5,\n            \"hospitalId\": 1,\n            \"examinationId\": 1,\n            \"status\": 0, //  0-normal, 1-cancelling\n            \"hospital\": {\n                \"id\": 1,\n                \"name\": \"上海xx医院\",\n                \"capacity\": 0,\n                \"description\": \"描述xx\",\n                \"address\": \"xx地址\",\n                \"regionId\": 1\n            },\n            \"examination\": {\n                \"id\": 1,\n                \"name\": \"套餐1\",\n                \"price\": 100,\n                \"genderType\": 0,\n                \"enabled\": 1,\n                \"hospitalId\": 1\n            }\n        },\n        {\n            \"id\": 1,\n            \"userId\": \"L_XDDBTest01\",\n            \"name\": \"大潘\",\n            \"birthday\": \"1993-10-22\",\n            \"gender\": 1,\n            \"age\": 28,\n            \"married\": 0,\n            \"reservationType\": 2,\n            \"date\": \"2021-05-05\",\n            \"year\": 2021,\n            \"month\": 5,\n            \"hospitalId\": 1,\n            \"examinationId\": 1,\n            \"status\": 0,\n            \"hospital\": {\n                \"id\": 1,\n                \"name\": \"上海xx医院\",\n                \"capacity\": 0,\n                \"description\": \"描述xx\",\n                \"address\": \"xx地址\",\n                \"regionId\": 1\n            },\n            \"examination\": {\n                \"id\": 1,\n                \"name\": \"套餐1\",\n                \"price\": 100,\n                \"genderType\": 0,\n                \"enabled\": 1,\n                \"hospitalId\": 1\n            }\n        }\n    ]\n }",
           "type": "json"
         },
         {
