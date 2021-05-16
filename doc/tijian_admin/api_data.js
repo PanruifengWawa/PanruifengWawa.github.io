@@ -323,10 +323,10 @@ define({ "api": [
           },
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "String",
             "optional": false,
             "field": "price",
-            "description": "<ul> <li>套餐价格 (必须, 要求大于等于0)</li> </ul>"
+            "description": "<ul> <li>套餐价格描述 (必须)</li> </ul>"
           },
           {
             "group": "Parameter",
@@ -392,7 +392,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [{\n         \"id\": 1,\n         \"name\": \"套餐1\",\n         \"description\": \"xxxx\",\n         \"price\": 100,\n         \"genderType\": 1, // 0-woman, 1-man, 2-anyone\n         \"enabled\": 0, // 0-no, 1-yes\n         \"hospitalId\": 1\n     }]\n }",
+          "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [{\n         \"id\": 1,\n         \"name\": \"套餐1\",\n         \"description\": \"xxxx\",\n         \"price\": \"100~200\",\n         \"genderType\": 1, // 0-woman, 1-man, 2-anyone\n         \"enabled\": 0, // 0-no, 1-yes\n         \"hospitalId\": 1\n     }]\n }",
           "type": "json"
         },
         {
@@ -451,10 +451,10 @@ define({ "api": [
           },
           {
             "group": "Parameter",
-            "type": "Integer",
+            "type": "String",
             "optional": false,
             "field": "price",
-            "description": "<ul> <li>套餐价格 (非必须, 要求大于等于0)</li> </ul>"
+            "description": "<ul> <li>套餐价格描述 (非必须)</li> </ul>"
           },
           {
             "group": "Parameter",

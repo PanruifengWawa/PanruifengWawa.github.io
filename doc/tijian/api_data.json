@@ -99,7 +99,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [\n        {\n            \"hospital\": {\n                \"id\": 1,\n                \"name\": \"上海xx医院\",\n                \"capacity\": 0,\n                \"description\": \"描述xx\",\n                \"address\": \"xx地址\",\n                \"regionId\": 1\n            },\n            \"examinations\": [\n                {\n                    \"id\": 1,\n                    \"name\": \"套餐1\",\n                    \"description\": \"<h1>富文本描述</h1>\",\n                    \"price\": 100,\n                    \"genderType\": 0, //0-woman, 1-man, 2-anyone\n                    \"enabled\": 1, //0-no, 1-yes\n                    \"hospitalId\": 1\n                }\n            ]\n        }\n    ]\n}",
+          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [\n        {\n            \"hospital\": {\n                \"id\": 1,\n                \"name\": \"上海xx医院\",\n                \"capacity\": 0,\n                \"description\": \"描述xx\",\n                \"address\": \"xx地址\",\n                \"regionId\": 1\n            },\n            \"examinations\": [\n                {\n                    \"id\": 1,\n                    \"name\": \"套餐1\",\n                    \"description\": \"<h1>富文本描述</h1>\",\n                    \"price\": \"100~200\",\n                    \"genderType\": 0, //0-woman, 1-man, 2-anyone\n                    \"enabled\": 1, //0-no, 1-yes\n                    \"hospitalId\": 1\n                }\n            ]\n        }\n    ]\n}",
           "type": "json"
         },
         {
