@@ -699,6 +699,180 @@ define({ "api": [
     "groupTitle": "hospital"
   },
   {
+    "type": "get",
+    "url": "api/admin/notice/notice",
+    "title": "获取体检须知",
+    "name": "notice-notice",
+    "group": "notice",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": \"123\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian_admin/src/main/java/com/tijian/admin/controller/NoticeController.java",
+    "groupTitle": "notice"
+  },
+  {
+    "type": "post",
+    "url": "api/admin/notice/notice",
+    "title": "保存体检须知",
+    "name": "notice-notice-add",
+    "group": "notice",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "notice",
+            "description": "<ul> <li>体检须知 (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian_admin/src/main/java/com/tijian/admin/controller/NoticeController.java",
+    "groupTitle": "notice"
+  },
+  {
+    "type": "get",
+    "url": "api/admin/notice/rule",
+    "title": "获取体检规则",
+    "name": "notice-rule",
+    "group": "notice",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": \"123\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian_admin/src/main/java/com/tijian/admin/controller/NoticeController.java",
+    "groupTitle": "notice"
+  },
+  {
+    "type": "post",
+    "url": "api/admin/notice/rule",
+    "title": "保存体检规则",
+    "name": "notice-rule-add",
+    "group": "notice",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "rule",
+            "description": "<ul> <li>体检规则 (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian_admin/src/main/java/com/tijian/admin/controller/NoticeController.java",
+    "groupTitle": "notice"
+  },
+  {
     "type": "post",
     "url": "api/admin/region",
     "title": "增加地区",
@@ -894,6 +1068,170 @@ define({ "api": [
     "groupTitle": "region"
   },
   {
+    "type": "get",
+    "url": "api/admin/reservation/getLastSubmitDate",
+    "title": "获取最大的导出日期",
+    "name": "reservation-getLastSubmitDate",
+    "group": "reservation",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Long",
+            "optional": false,
+            "field": "hospitalId",
+            "description": "<ul> <li>医院id (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": \"2021-07-20\"\n }",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian_admin/src/main/java/com/tijian/admin/controller/ReservationController.java",
+    "groupTitle": "reservation"
+  },
+  {
+    "type": "get",
+    "url": "api/admin/reservation/list",
+    "title": "获取预约列表",
+    "name": "reservation-list",
+    "group": "reservation",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "hospitalId",
+            "description": "<ul> <li>医院id (必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "startDate",
+            "description": "<ul> <li>开始日期 (必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "endDate",
+            "description": "<ul> <li>结束日期 (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"userId\": \"L_XDDBTest01\",\n            \"name\": \"潘瑞峰\",\n            \"birthday\": \"1993-10-22\",\n            \"gender\": 1, // 0-woman, 1-man\n            \"age\": 28,\n            \"married\": 0, // 0-no, 1-yes\n            \"reservationType\": 0, // 0-家属1号, 1-家属2号, 2-员工\n            \"date\": \"2021-05-05\", //预约日期\n            \"year\": 2021,\n            \"month\": 5,\n            \"hospitalId\": 1,\n            \"examinationId\": 1,\n            \"status\": 0, //  0-normal, 1-cancelling\n            \"examination\": {\n                \"id\": 1,\n                \"name\": \"套餐1\",\n                \"hospitalId\": 1\n            }\n        }\n    ]\n }",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian_admin/src/main/java/com/tijian/admin/controller/ReservationController.java",
+    "groupTitle": "reservation"
+  },
+  {
+    "type": "get",
+    "url": "api/admin/reservation/listByUserId",
+    "title": "获取某个员工的预约记录",
+    "name": "reservation-listByUserId",
+    "group": "reservation",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "userId",
+            "description": "<ul> <li>用户id (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"userId\": \"L_XDDBTest01\",\n            \"name\": \"潘瑞峰\",\n            \"birthday\": \"1993-10-22\",\n            \"gender\": 1, // 0-woman, 1-man\n            \"age\": 28,\n            \"married\": 0, // 0-no, 1-yes\n            \"reservationType\": 0, // 0-家属1号, 1-家属2号, 2-员工\n            \"date\": \"2021-05-05\", //预约日期\n            \"year\": 2021,\n            \"month\": 5,\n            \"hospitalId\": 1,\n            \"examinationId\": 1,\n            \"status\": 0, //  0-normal, 1-cancelling\n            \"examination\": {\n                \"id\": 1,\n                \"name\": \"套餐1\",\n                \"hospitalId\": 1\n            }\n        }\n    ]\n }",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian_admin/src/main/java/com/tijian/admin/controller/ReservationController.java",
+    "groupTitle": "reservation"
+  },
+  {
     "type": "post",
     "url": "api/admin/reservation/open",
     "title": "开启今年的预约",
@@ -909,6 +1247,63 @@ define({ "api": [
             "optional": false,
             "field": "token",
             "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": null\n }",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian_admin/src/main/java/com/tijian/admin/controller/ReservationController.java",
+    "groupTitle": "reservation"
+  },
+  {
+    "type": "post",
+    "url": "api/admin/reservation/recordSubmitDate",
+    "title": "记录某次导出日期",
+    "name": "reservation-recordSubmitDate",
+    "group": "reservation",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Long",
+            "optional": false,
+            "field": "hospitalId",
+            "description": "<ul> <li>医院id (必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "date",
+            "description": "<ul> <li>日期 (必须, yyyy-MM-dd)</li> </ul>"
           }
         ]
       }

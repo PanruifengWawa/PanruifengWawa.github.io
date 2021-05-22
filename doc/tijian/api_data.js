@@ -202,6 +202,80 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "api/notice/notice",
+    "title": "获取体检须知",
+    "name": "notice-notice",
+    "group": "notice",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": \"123\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian/src/main/java/com/tijian/user/controller/NoticeController.java",
+    "groupTitle": "notice"
+  },
+  {
+    "type": "get",
+    "url": "api/notice/rule",
+    "title": "获取体检规则",
+    "name": "notice-rule",
+    "group": "notice",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": \"123\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian/src/main/java/com/tijian/user/controller/NoticeController.java",
+    "groupTitle": "notice"
+  },
+  {
+    "type": "get",
     "url": "api/reservation/{id}/cancel",
     "title": "取消预约",
     "name": "reservation-cancel",
