@@ -126,7 +126,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "Long",
             "optional": false,
-            "field": "id",
+            "field": "String",
             "description": "<ul> <li>日历id (必须)</li> </ul>"
           }
         ]
@@ -200,7 +200,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [{\n         \"id\": 1,\n         \"date\": \"2021-06-03\",\n         \"year\": 2021,\n         \"month\": 6,\n         \"capacity\": 20,\n         \"hospitalId\": 1\n     }]\n }",
+          "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [{\n         \"id\": \"1_2021-06-03\",\n         \"date\": \"2021-06-03\",\n         \"year\": 2021,\n         \"month\": 6,\n         \"capacity\": 20,\n         \"hospitalId\": 1\n     }]\n }",
           "type": "json"
         },
         {
@@ -217,7 +217,7 @@ define({ "api": [
   {
     "type": "post",
     "url": "api/admin/calendar/upsert",
-    "title": "添加/更新日历",
+    "title": "批量添加/更新日历",
     "name": "calendar-upsert",
     "group": "calendar",
     "header": {
@@ -247,8 +247,8 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "date",
-            "description": "<ul> <li>日期 (必须, yyyy-MM-dd)</li> </ul>"
+            "field": "dates",
+            "description": "<ul> <li>日期 (必须, yyyy-MM-dd, 日期列表, 用逗号分隔, 如 &quot;2021-06-01,2021-06-02&quot;)</li> </ul>"
           },
           {
             "group": "Parameter",
@@ -1066,6 +1066,56 @@ define({ "api": [
     "version": "0.0.0",
     "filename": "C:/Users/86137/Documents/workspace/tijian_admin/src/main/java/com/tijian/admin/controller/RegionController.java",
     "groupTitle": "region"
+  },
+  {
+    "type": "post",
+    "url": "api/admin/reservation/cancel",
+    "title": "批量取消预约",
+    "name": "reservation-cancel",
+    "group": "reservation",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "reservationIds",
+            "description": "<ul> <li>预约id列表 (必须, 用逗号分隔, 如 &quot;1,2,3&quot;)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": null\n }",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian_admin/src/main/java/com/tijian/admin/controller/ReservationController.java",
+    "groupTitle": "reservation"
   },
   {
     "type": "get",
