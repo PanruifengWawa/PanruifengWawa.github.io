@@ -1543,6 +1543,120 @@
     "groupTitle": "rule"
   },
   {
+    "type": "post",
+    "url": "api/admin/rule/date/ban",
+    "title": "批量添加禁止预约日期规则",
+    "name": "rule-ban-date",
+    "group": "rule",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Long",
+            "optional": false,
+            "field": "hospitalId",
+            "description": "<ul> <li>医院id (必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "employeeType",
+            "description": "<ul> <li>员工类型 (必须, 1-家属, 2-员工)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "dates",
+            "description": "<ul> <li>日期 (必须, 逗号分隔, 可以是批量, 也可是某一天, 如&quot;2021-05-06,2021-05-07&quot;或者&quot;2021-07-21&quot;)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": null\n }",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian_admin/src/main/java/com/tijian/admin/controller/RuleController.java",
+    "groupTitle": "rule"
+  },
+  {
+    "type": "get",
+    "url": "api/admin/rule/date/ban/delete",
+    "title": "删除禁止预约日期的规则",
+    "name": "rule-delete-ban-date",
+    "group": "rule",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<ul> <li>日期规则的id (必须, 注意是字符串)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": null\n }",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian_admin/src/main/java/com/tijian/admin/controller/RuleController.java",
+    "groupTitle": "rule"
+  },
+  {
     "type": "get",
     "url": "api/admin/rule/date/delete",
     "title": "删除日期的规则",
@@ -1629,6 +1743,56 @@
         {
           "title": "Success-Response:",
           "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": null\n }",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian_admin/src/main/java/com/tijian/admin/controller/RuleController.java",
+    "groupTitle": "rule"
+  },
+  {
+    "type": "get",
+    "url": "api/admin/rule/date/ban",
+    "title": "获取禁止预约日期的规则",
+    "name": "rule-get-ban-date",
+    "group": "rule",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Long",
+            "optional": false,
+            "field": "hospitalId",
+            "description": "<ul> <li>医院id (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [{\n         \"id\": \"1_2021-05-22_1\",\n         \"employeeType\": 1,\n         \"date\": \"2021-05-22\",\n         \"hospitalId\": 1\n     }]\n }",
           "type": "json"
         },
         {
