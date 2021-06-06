@@ -202,6 +202,56 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "api/hospital/{id}/rule",
+    "title": "获取医院规则",
+    "name": "rule-get",
+    "group": "hospital",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Long",
+            "optional": false,
+            "field": "id",
+            "description": "<ul> <li>医院id (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\tHTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": {\n        \"weekRules\": [\n            {\n                \"id\": \"1_1_1\",\n                \"employeeType\": 1,\n                \"weekDay\": 1,\n                \"hospitalId\": 1\n            }\n        ],\n        \"dateRules\": [\n            {\n                \"id\": \"1_2021-06-11_1\",\n                \"employeeType\": 1,\n                \"date\": \"2021-06-13\",\n                \"hospitalId\": 1\n            }\n        ],\n        \"banDateRules\": [\n            {\n                \"id\": \"1_2021-06-13_1_ban\",\n                \"employeeType\": 1,\n                \"date\": \"2021-06-14\",\n                \"hospitalId\": 1\n            }\n        ]\n    }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/tijian/src/main/java/com/tijian/user/controller/HospitalController.java",
+    "groupTitle": "hospital"
+  },
+  {
+    "type": "get",
     "url": "api/notice/notice",
     "title": "获取体检须知",
     "name": "notice-notice",
