@@ -1,0 +1,167 @@
+define({ "api": [
+  {
+    "type": "post",
+    "url": "api/admin/changePWD",
+    "title": "管理员修改密码",
+    "name": "admin-changePWD",
+    "group": "admin",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "oldPWD",
+            "description": "<ul> <li>旧密码 (必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "newPWD",
+            "description": "<ul> <li>新密码 (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n\t\"status\": 0,\n\t\"errorCode\": \"Success\",\n\t\"data\": null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthError\",\n\t\t\"data\": \"用户名或密码错误\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/hr_sender/src/main/java/com/hr/sender/controller/AdminController.java",
+    "groupTitle": "admin"
+  },
+  {
+    "type": "post",
+    "url": "api/admin/login",
+    "title": "管理员登录",
+    "name": "admin-login",
+    "group": "admin",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userName",
+            "description": "<ul> <li>用户名 (必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<ul> <li>密码 (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n\t\"status\": 0,\n\t\"errorCode\": \"Success\",\n\t\"data\": \"d3527b79-06f8-4f61-be4f-45723078b3ed\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\t\"status\": 1,\n\t\t\"errorCode\": \"AuthError\",\n\t\t\"data\": \"用户名或密码错误\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/hr_sender/src/main/java/com/hr/sender/controller/AdminController.java",
+    "groupTitle": "admin"
+  },
+  {
+    "type": "post",
+    "url": "api/message/send",
+    "title": "发送消息",
+    "name": "message-send",
+    "group": "message",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userId",
+            "description": "<ul> <li>工号 (必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "content",
+            "description": "<ul> <li>加密且encode url后的密文 (必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "tid",
+            "description": "<ul> <li>模板id (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n\t\"status\": 0,\n\t\"errorCode\": \"Success\",\n\t\"data\": null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthError\",\n\t\t\"data\": \"用户名或密码错误\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/hr_sender/src/main/java/com/hr/sender/controller/SenderController.java",
+    "groupTitle": "message"
+  }
+] });
