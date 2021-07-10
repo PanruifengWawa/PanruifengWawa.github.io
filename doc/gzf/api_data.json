@@ -1,0 +1,317 @@
+[
+  {
+    "type": "get",
+    "url": "api/admin/getAll",
+    "title": "获取所有信息",
+    "name": "admin-get",
+    "group": "admin",
+    "description": "<p>请求方需要在ip白名单中；规则中的null值会被过滤</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"type\": 0,\n            \"name\": \"潘瑞峰\",\n            \"email\": \"123@qq.com\",\n            \"account\": \"prf\",\n            \"password\": \"MTIzMTIz\",\n            \"rule\": [\n                {\n                    \"id\": 1,\n                    \"userId\": 1,\n                    \"projectId\": 8311,\n                    \"name\": \"玉兰路60弄\",\n                    \"minArea\": 70,\n                    \"maxArea\": 100\n                },\n                {\n                    \"id\": 2,\n                    \"userId\": 1,\n                    \"projectId\": 8312,\n                    \"name\": \"和炯路501弄（德康苑）\",\n                    \"targetType\": \"[1,2]\",\n                    \"excludeType\": \"[3]\",\n                    \"excludeFloor\": \"[1,3]\",\n                    \"minFloor\": 2,\n                    \"maxPrice\": 100,\n                    \"minArea\": 70,\n                    \"maxArea\": 100\n                },\n                {\n                    \"id\": 3,\n                    \"userId\": 1,\n                    \"projectId\": 8313,\n                    \"name\": \"航城三路288弄（同悦湾华庭）\"\n                }\n            ]\n        }\n    ]\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/AdminController.java",
+    "groupTitle": "admin"
+  },
+  {
+    "type": "post",
+    "url": "api/rule/{id}/delete",
+    "title": "删除规则",
+    "name": "rule-delete",
+    "group": "rule",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Long",
+            "optional": false,
+            "field": "id",
+            "description": "<ul> <li>规则id (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/RuleController.java",
+    "groupTitle": "rule"
+  },
+  {
+    "type": "get",
+    "url": "api/rule/",
+    "title": "用户获取所有规则",
+    "name": "rule-get",
+    "group": "rule",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "description": "<p>规则中的null值会被保留</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [{\n       \"id\": 1,\n       \"userId\": 1,\n       \"projectId\": 123,\n       \"name\": \"玉兰路60弄\",\n       \"targetType\": \"[1, 2]\", // 可能为null\n       \"excludeType\": null,\n       \"excludeFloor\": \"[1, 2]\", // 可能为null\n       \"minFloor\": 1, // 可能为null\n       \"maxPrice\": null,\n       \"minArea\": 50, // 可能为null\n       \"maxArea\": 100 // 可能为null\n    }]\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/RuleController.java",
+    "groupTitle": "rule"
+  },
+  {
+    "type": "post",
+    "url": "api/rule/",
+    "title": "添加或者更新规则",
+    "name": "rule-post",
+    "group": "rule",
+    "description": "<p>当某个projectId对应的规则已存在时, 会更新记录。 需要用户提交账号，密码，姓名，邮箱后，方可调用此接口</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Long",
+            "optional": false,
+            "field": "projectId",
+            "description": "<ul> <li>小区id (必须, 某个用户对应某个小区的规则是唯一的)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Long",
+            "optional": false,
+            "field": "name",
+            "description": "<ul> <li>小区名字 (必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "targetType",
+            "description": "<ul> <li>目标房源类型 (非必须, 格式如[1,2])</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "excludeType",
+            "description": "<ul> <li>排除房源类型 (非必须, 格式如[1,2])</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "excludeFloor",
+            "description": "<ul> <li>排除楼层 (非必须, 格式如[1,2])</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "minFloor",
+            "description": "<ul> <li>最低楼层 (非必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "maxPrice",
+            "description": "<ul> <li>最高价格 (非必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "minArea",
+            "description": "<ul> <li>最小面积 (非必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "maxArea",
+            "description": "<ul> <li>最大面积 (非必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/RuleController.java",
+    "groupTitle": "rule"
+  },
+  {
+    "type": "post",
+    "url": "api/user/login",
+    "title": "用户登录",
+    "name": "user-login",
+    "group": "user",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<ul> <li>用户授权后的code (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": {\n        \"id\": 1,\n        \"unionId\": \"dp_unionid\",\n        \"openId\": \"dp_openid\",\n        \"type\": 0, // 0-普通用户, 1-vip\n        \"name\": null, // 已填写过的用户是有值的\n        \"email\": null, // 已填写过的用户是有值的\n        \"account\": null, // 已填写过的用户是有值的\n        \"tokenStr\": \"c3800ad8-1fd2-4a93-b9d7-9524eedf78fb\",\n        \"loginDate\": \"2021-07-10 23:56:05\"\n    }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/UserController.java",
+    "groupTitle": "user"
+  },
+  {
+    "type": "post",
+    "url": "api/user/update",
+    "title": "补齐用户信息",
+    "name": "user-update",
+    "group": "user",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<ul> <li>(必须, 姓名)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<ul> <li>(必须, 邮箱)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "account",
+            "description": "<ul> <li>(必须, 公租房账号)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<ul> <li>(必须, 公租房密码)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/UserController.java",
+    "groupTitle": "user"
+  }
+]
