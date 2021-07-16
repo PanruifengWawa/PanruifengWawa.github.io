@@ -102,6 +102,56 @@ define({ "api": [
   },
   {
     "type": "post",
+    "url": "api/admin/resetUser",
+    "title": "管理员重置用户",
+    "name": "admin-resetUser",
+    "group": "admin",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userId",
+            "description": "<ul> <li>工号 (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n\t\"status\": 0,\n\t\"errorCode\": \"Success\",\n\t\"data\": null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"ParameterError\",\n\t\t\"data\": \"用户不存在\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/hr_sender/src/main/java/com/hr/sender/controller/AdminController.java",
+    "groupTitle": "admin"
+  },
+  {
+    "type": "post",
     "url": "api/message/send",
     "title": "发送消息",
     "name": "message-send",
