@@ -10,7 +10,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"type\": 0,\n            \"name\": \"潘瑞峰\",\n            \"email\": \"123@qq.com\",\n            \"account\": \"prf\",\n            \"password\": \"MTIzMTIz\",\n            \"rule\": [\n                {\n                    \"id\": 1,\n                    \"userId\": 1,\n                    \"projectId\": 8311,\n                    \"name\": \"玉兰路60弄\",\n                    \"minArea\": 70,\n                    \"maxArea\": 100\n                },\n                {\n                    \"id\": 2,\n                    \"userId\": 1,\n                    \"projectId\": 8312,\n                    \"name\": \"和炯路501弄（德康苑）\",\n                    \"targetType\": \"[1,2]\",\n                    \"excludeType\": \"[3]\",\n                    \"excludeFloor\": \"[1,3]\",\n                    \"minFloor\": 2,\n                    \"maxPrice\": 100,\n                    \"minArea\": 70,\n                    \"maxArea\": 100\n                },\n                {\n                    \"id\": 3,\n                    \"userId\": 1,\n                    \"projectId\": 8313,\n                    \"name\": \"航城三路288弄（同悦湾华庭）\"\n                }\n            ]\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"type\": 0,\n            \"name\": \"潘瑞峰\",\n            \"email\": \"123@qq.com\",\n            \"account\": \"prf\",\n            \"password\": \"MTIzMTIz\", //base64值\n            \"rule\": [\n                {\n                    \"id\": 1,\n                    \"userId\": 1,\n                    \"projectId\": 8311,\n                    \"name\": \"玉兰路60弄\",\n                    \"minArea\": 70,\n                    \"maxArea\": 100\n                },\n                {\n                    \"id\": 2,\n                    \"userId\": 1,\n                    \"projectId\": 8312,\n                    \"name\": \"和炯路501弄（德康苑）\",\n                    \"targetType\": \"[1,2]\",\n                    \"excludeType\": \"[3]\",\n                    \"excludeFloor\": \"[1,3]\",\n                    \"minFloor\": 2,\n                    \"maxPrice\": 100,\n                    \"minArea\": 70,\n                    \"maxArea\": 100\n                },\n                {\n                    \"id\": 3,\n                    \"userId\": 1,\n                    \"projectId\": 8313,\n                    \"name\": \"航城三路288弄（同悦湾华庭）\"\n                }\n            ]\n        }\n    ]\n}",
           "type": "json"
         },
         {
@@ -23,6 +23,56 @@ define({ "api": [
     "version": "0.0.0",
     "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/AdminController.java",
     "groupTitle": "admin"
+  },
+  {
+    "type": "get",
+    "url": "api/pay",
+    "title": "获取预支付信息",
+    "name": "pay-get",
+    "group": "pay",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<ul> <li>类型 (必须, 0-邮件付费20元, 1-年费100元)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": {\n        \"timeStamp\": 1628096955,\n        \"nonceStr\": \"aaade446b34d4f179f3debfe61a08922\",\n        \"packageStr\": \"prepay_id=wx0501091450211077d105b239c8b3fc0000\",\n        \"signType\": \"RSA\",\n        \"paySign\": \"d59CY6DVH0A3JJC34kDm6T8fvJMN1RLgV1cPhkUQoO9FiF1ZU2QDaLAYu1PUdmbTbPV3fsksMXLhjxb+lGh73+zqZLu9o65DxkpJ8SYh60LcNIdbFmuQ3+Osy78M6r82blDctpwn0rqUFAFvJl+7Nv8qi8fHaOY/D7NcAC8RIlKlb9wZHTJS245N2F19jckcVo+Mkdtqapnv4A37qn/Q50lt5ChiflLj7XIniy3N1aHckHdLQq2+LySCk3IOtaA6FQlhE1dBDTFpTjVXFZWDj4b5rWhXmadMsPCvGAW2OeOxOg74gWNGdLLITlcZRqevx+AfKZ1m4Hkkda6YHkyCtQ==\"\n    }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/PayController.java",
+    "groupTitle": "pay"
   },
   {
     "type": "post",
