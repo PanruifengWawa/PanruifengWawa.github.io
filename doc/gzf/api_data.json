@@ -312,6 +312,19 @@
     "title": "补齐用户信息",
     "name": "user-update",
     "group": "user",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
     "parameter": {
       "fields": {
         "Parameter": [
@@ -320,28 +333,28 @@
             "type": "String",
             "optional": false,
             "field": "name",
-            "description": "<ul> <li>(必须, 姓名)</li> </ul>"
+            "description": "<ul> <li>(非必须, 姓名)</li> </ul>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "email",
-            "description": "<ul> <li>(必须, 邮箱)</li> </ul>"
+            "description": "<ul> <li>(非必须, 邮箱)</li> </ul>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "account",
-            "description": "<ul> <li>(必须, 公租房账号)</li> </ul>"
+            "description": "<ul> <li>(非必须, 公租房账号)</li> </ul>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "password",
-            "description": "<ul> <li>(必须, 公租房密码)</li> </ul>"
+            "description": "<ul> <li>(非必须, 公租房密码, 只有account和password都非空的情况下，才会更新这两个字段)</li> </ul>"
           }
         ]
       }
@@ -370,6 +383,19 @@
     "title": "获取用户vip信息",
     "name": "user-vip",
     "group": "user",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
     "success": {
       "examples": [
         {
