@@ -1,5 +1,62 @@
 [
   {
+    "type": "post",
+    "url": "api/admin/changePWD",
+    "title": "管理员修改密码",
+    "name": "admin-changePWD",
+    "group": "admin",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "oldPWD",
+            "description": "<ul> <li>旧密码 (必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "newPWD",
+            "description": "<ul> <li>新密码 (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n\t\"status\": 0,\n\t\"errorCode\": \"Success\",\n\t\"data\": null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthError\",\n\t\t\"data\": \"用户名或密码错误\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/AdminController.java",
+    "groupTitle": "admin"
+  },
+  {
     "type": "get",
     "url": "api/admin/getAll",
     "title": "获取所有信息",
@@ -16,6 +73,50 @@
         {
           "title": "Error-Response:",
           "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/AdminController.java",
+    "groupTitle": "admin"
+  },
+  {
+    "type": "post",
+    "url": "api/admin/login",
+    "title": "管理员登录",
+    "name": "admin-login",
+    "group": "admin",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userName",
+            "description": "<ul> <li>用户名 (必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<ul> <li>密码 (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n\t\"status\": 0,\n\t\"errorCode\": \"Success\",\n\t\"data\": \"d3527b79-06f8-4f61-be4f-45723078b3ed\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\t\"status\": 1,\n\t\t\"errorCode\": \"AuthError\",\n\t\t\"data\": \"用户名或密码错误\"\n\t}",
           "type": "json"
         }
       ]
@@ -73,6 +174,171 @@
     "version": "0.0.0",
     "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/PayController.java",
     "groupTitle": "pay"
+  },
+  {
+    "type": "post",
+    "url": "api/project_detail/{projectId}/delete",
+    "title": "删除房源详情",
+    "name": "project_detail-delete",
+    "group": "project_detail",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证(管理员)</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Long",
+            "optional": false,
+            "field": "projectId",
+            "description": "<ul> <li>房源id (必须, 路径参数)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/ProjectDetailController.java",
+    "groupTitle": "project_detail"
+  },
+  {
+    "type": "get",
+    "url": "api/project_detail/{projectId}",
+    "title": "获取房源详情(无需登陆)",
+    "name": "project_detail-get",
+    "group": "project_detail",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Long",
+            "optional": false,
+            "field": "projectId",
+            "description": "<ul> <li>房源id (必须, 路径参数)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": { // 没有配置房源信息的情况下, data: null\n        \"projectId\": 1,\n        \"description\": \"介绍\",\n        \"imageUrls\": \"[\\\"http://xxx.com/1.jpg\\\", \\\"http://xxx.com/2.jpg\\\"]\",\n        \"videoUrl\": http://xxx.com/1.mp4,\n        \"equipment\": \"洗衣机、空调\",\n    }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/ProjectDetailController.java",
+    "groupTitle": "project_detail"
+  },
+  {
+    "type": "post",
+    "url": "api/project_detail/{projectId}/upsert",
+    "title": "添加/更新房源详情",
+    "name": "project_detail-upsert",
+    "group": "project_detail",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证(管理员)</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Long",
+            "optional": false,
+            "field": "projectId",
+            "description": "<ul> <li>房源id (必须, 路径参数)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "description",
+            "description": "<ul> <li>详情 (必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "imageUrls",
+            "description": "<ul> <li>房源图片 (必须, 例如[&quot;http://xxx.com/1.jpg&quot;, &quot;http://xxx.com/2.jpg&quot;]；当无图片时用 [])</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "videoUrl",
+            "description": "<ul> <li>房源视频介绍 (必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "equipment",
+            "description": "<ul> <li>房源配置 (必须, 如 &quot;洗衣机、空调&quot;)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/ProjectDetailController.java",
+    "groupTitle": "project_detail"
   },
   {
     "type": "post",
