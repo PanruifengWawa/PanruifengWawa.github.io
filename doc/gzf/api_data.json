@@ -558,7 +558,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": {\n        \"id\": 1,\n        \"unionId\": \"dp_unionid\",\n        \"openId\": \"dp_openid\",\n        \"type\": 0, // 0-普通用户, 1-vip\n        \"name\": null, // 已填写过的用户是有值的\n        \"email\": null, // 已填写过的用户是有值的\n        \"account\": null, // 已填写过的用户是有值的\n        \"tokenStr\": \"c3800ad8-1fd2-4a93-b9d7-9524eedf78fb\",\n        \"loginDate\": \"2021-07-10 23:56:05\"\n    }\n}",
+          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": {\n        \"id\": 1,\n        \"unionId\": \"dp_unionid\",\n        \"openId\": \"dp_openid\",\n        \"type\": 0, // 0-普通用户, 1-vip\n        \"name\": null, // 已填写过的用户是有值的\n        \"email\": null, // 已填写过的用户是有值的\n        \"account\": null, // 已填写过的用户是有值的\n        \"tokenStr\": \"c3800ad8-1fd2-4a93-b9d7-9524eedf78fb\",\n        \"loginDate\": \"2021-07-10 23:56:05\",\n        \"emailExpireDate\": null,\n        \"serverAccountId\": \"90a3c67d-70ce-4e25-911b-330dfc9f3753\", //可以为null\n        \"startDate\": \"2021-04-26 00:00:00\" //可以为null\n    }\n}",
           "type": "json"
         },
         {
@@ -634,7 +634,7 @@
         },
         {
           "title": "Error-Response:",
-          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"公租房账号密码验证失败\"\n\t}",
           "type": "json"
         }
       ]
