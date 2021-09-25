@@ -67,7 +67,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"type\": 1, // 0-非会员; 1-邮件会员,需要关注emailExpireDate判断是否过期; 2-终身会员\n            \"emailExpireDate\": \"2021-10-01\", // 可以为null\n            \"name\": \"潘瑞峰\",\n            \"email\": \"123@qq.com\",\n            \"account\": \"prf\",\n            \"password\": \"MTIzMTIz\", //base64值\n            \"rule\": [\n                {\n                    \"id\": 1,\n                    \"userId\": 1,\n                    \"projectId\": 8311,\n                    \"name\": \"玉兰路60弄\",\n                    \"minArea\": 70,\n                    \"maxArea\": 100\n                },\n                {\n                    \"id\": 2,\n                    \"userId\": 1,\n                    \"projectId\": 8312,\n                    \"name\": \"和炯路501弄（德康苑）\",\n                    \"targetType\": \"[1,2]\",\n                    \"excludeType\": \"[3]\",\n                    \"excludeFloor\": \"[1,3]\",\n                    \"minFloor\": 2,\n                    \"maxPrice\": 100,\n                    \"minArea\": 70,\n                    \"maxArea\": 100\n                },\n                {\n                    \"id\": 3,\n                    \"userId\": 1,\n                    \"projectId\": 8313,\n                    \"name\": \"航城三路288弄（同悦湾华庭）\"\n                }\n            ]\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"type\": 1, // 0-非会员; 1-邮件会员,需要关注emailExpireDate判断是否过期; 2-终身会员\n            \"emailExpireDate\": \"2021-10-01\", // 可以为null\n            \"name\": \"潘瑞峰\",\n            \"email\": \"123@qq.com\",\n            \"account\": \"prf\",\n            \"password\": \"MTIzMTIz\", //base64值\n            \"rule\": [\n                {\n                    \"id\": 1,\n                    \"userId\": 1,\n                    \"projectId\": 8311,\n                    \"name\": \"玉兰路60弄\",\n                    \"minArea\": 70,\n                    \"maxArea\": 100,\n                    \"autoChoose\": 1\n                },\n                {\n                    \"id\": 2,\n                    \"userId\": 1,\n                    \"projectId\": 8312,\n                    \"name\": \"和炯路501弄（德康苑）\",\n                    \"targetType\": \"[1,2]\",\n                    \"excludeType\": \"[3]\",\n                    \"excludeFloor\": \"[1,3]\",\n                    \"minFloor\": 2,\n                    \"maxPrice\": 100,\n                    \"minArea\": 70,\n                    \"maxArea\": 100,\n                    \"autoChoose\": 1\n                },\n                {\n                    \"id\": 3,\n                    \"userId\": 1,\n                    \"projectId\": 8313,\n                    \"name\": \"航城三路288弄（同悦湾华庭）\",\n                    \"autoChoose\": 1\n                }\n            ]\n        }\n    ]\n}",
           "type": "json"
         },
         {
@@ -414,7 +414,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [{\n       \"id\": 1,\n       \"userId\": 1,\n       \"projectId\": 123,\n       \"name\": \"玉兰路60弄\",\n       \"targetType\": \"[1, 2]\", // 可能为null\n       \"excludeType\": null,\n       \"excludeFloor\": \"[1, 2]\", // 可能为null\n       \"minFloor\": 1, // 可能为null\n       \"maxPrice\": null,\n       \"minArea\": 50, // 可能为null\n       \"maxArea\": 100 // 可能为null\n    }]\n}",
+          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [{\n       \"id\": 1,\n       \"userId\": 1,\n       \"projectId\": 123,\n       \"name\": \"玉兰路60弄\",\n       \"targetType\": \"[1, 2]\", // 可能为null\n       \"excludeType\": null,\n       \"excludeFloor\": \"[1, 2]\", // 可能为null\n       \"minFloor\": 1, // 可能为null\n       \"maxPrice\": null,\n       \"minArea\": 50, // 可能为null\n       \"maxArea\": 100, // 可能为null\n       \"autoChoose\": 1 // 0-不自动选房, 1-自动\n    }]\n}",
           "type": "json"
         },
         {
@@ -513,6 +513,13 @@
             "optional": false,
             "field": "maxArea",
             "description": "<ul> <li>最大面积 (非必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "autoChoose",
+            "description": "<ul> <li>自动选房 (非必须,0-不自动选房, 1-自动)</li> </ul>"
           }
         ]
       }
