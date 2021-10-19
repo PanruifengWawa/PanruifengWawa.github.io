@@ -67,7 +67,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"type\": 1, // 0-非会员; 2-终身会员\n            \"emailExpireDate\": \"2021-10-01\", // 可以为null，遗留参数，需要忽略\n            \"name\": \"潘瑞峰\",\n            \"email\": \"123@qq.com\",\n            \"account\": \"prf\",\n            \"password\": \"MTIzMTIz\", //base64值\n            \"manualStartDate\": \"2021-01-01\", // 人为输入的公租房账号start date，可以为null\n            \"emailSubscription\": 1, // //1-订阅，0-不订阅\n            \"rule\": [\n                {\n                    \"id\": 1,\n                    \"userId\": 1,\n                    \"projectId\": 8311,\n                    \"name\": \"玉兰路60弄\",\n                    \"minArea\": 70,\n                    \"maxArea\": 100,\n                    \"autoChoose\": 1\n                },\n                {\n                    \"id\": 2,\n                    \"userId\": 1,\n                    \"projectId\": 8312,\n                    \"name\": \"和炯路501弄（德康苑）\",\n                    \"targetType\": \"[1,2]\",\n                    \"excludeType\": \"[3]\",\n                    \"excludeFloor\": \"[1,3]\",\n                    \"minFloor\": 2,\n                    \"maxPrice\": 100,\n                    \"minArea\": 70,\n                    \"maxArea\": 100,\n                    \"autoChoose\": 1\n                },\n                {\n                    \"id\": 3,\n                    \"userId\": 1,\n                    \"projectId\": 8313,\n                    \"name\": \"航城三路288弄（同悦湾华庭）\",\n                    \"autoChoose\": 1\n                }\n            ]\n        }\n    ]\n}",
+          "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"type\": 1, // 0-非会员; 2-终身会员\n            \"emailExpireDate\": \"2021-10-01\", // 可以为null，遗留参数，需要忽略\n            \"name\": \"潘瑞峰\",\n            \"email\": \"123@qq.com\",\n            \"account\": \"prf\",\n            \"password\": \"MTIzMTIz\", //base64值\n            \"manualStartDate\": \"2021-01-01\", // 人为输入的公租房账号start date，可以为null\n            \"emailSubscription\": 1, // 1-订阅，0-不订阅\n            \"autoChoose\": 1, // 用户级别的开关, 1-yes, 0-no\n            \"rule\": [\n                {\n                    \"id\": 1,\n                    \"userId\": 1,\n                    \"projectId\": 8311,\n                    \"name\": \"玉兰路60弄\",\n                    \"minArea\": 70,\n                    \"maxArea\": 100,\n                    \"autoChoose\": 1\n                },\n                {\n                    \"id\": 2,\n                    \"userId\": 1,\n                    \"projectId\": 8312,\n                    \"name\": \"和炯路501弄（德康苑）\",\n                    \"targetType\": \"[1,2]\",\n                    \"excludeType\": \"[3]\",\n                    \"excludeFloor\": \"[1,3]\",\n                    \"minFloor\": 2,\n                    \"maxPrice\": 100,\n                    \"minArea\": 70,\n                    \"maxArea\": 100,\n                    \"autoChoose\": 1\n                },\n                {\n                    \"id\": 3,\n                    \"userId\": 1,\n                    \"projectId\": 8313,\n                    \"name\": \"航城三路288弄（同悦湾华庭）\",\n                    \"autoChoose\": 1\n                }\n            ]\n        }\n    ]\n}",
           "type": "json"
         },
         {
@@ -579,7 +579,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": {\n        \"id\": 1,\n        \"unionId\": \"dp_unionid\",\n        \"openId\": \"dp_openid\",\n        \"type\": 0, // 0-普通用户, 2-vip\n        \"name\": null, // 已填写过的用户是有值的\n        \"email\": null, // 已填写过的用户是有值的\n        \"account\": null, // 已填写过的用户是有值的\n        \"tokenStr\": \"c3800ad8-1fd2-4a93-b9d7-9524eedf78fb\",\n        \"loginDate\": \"2021-07-10 23:56:05\",\n        \"emailExpireDate\": null, // 遗留参数，需要忽略\n        \"serverAccountId\": \"90a3c67d-70ce-4e25-911b-330dfc9f3753\", //可以为null\n        \"startDate\": \"2021-04-26 00:00:00\", //可以为null\n        \"manualStartDate\": \"2021-04-26\", //可以为null\n        \"emailSubscription\": 1 //1-订阅，0-不订阅\n    }\n}",
+          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": {\n        \"id\": 1,\n        \"unionId\": \"dp_unionid\",\n        \"openId\": \"dp_openid\",\n        \"type\": 0, // 0-普通用户, 2-vip\n        \"name\": null, // 已填写过的用户是有值的\n        \"email\": null, // 已填写过的用户是有值的\n        \"account\": null, // 已填写过的用户是有值的\n        \"tokenStr\": \"c3800ad8-1fd2-4a93-b9d7-9524eedf78fb\",\n        \"loginDate\": \"2021-07-10 23:56:05\",\n        \"emailExpireDate\": null, // 遗留参数，需要忽略\n        \"serverAccountId\": \"90a3c67d-70ce-4e25-911b-330dfc9f3753\", //可以为null\n        \"startDate\": \"2021-04-26 00:00:00\", //可以为null\n        \"manualStartDate\": \"2021-04-26\", //可以为null\n        \"emailSubscription\": 1, //1-订阅，0-不订阅\n        \"autoChoose\": 1 //1-yes, 0-no\n    }\n}",
           "type": "json"
         },
         {
@@ -656,6 +656,13 @@ define({ "api": [
             "optional": false,
             "field": "emailSubscription",
             "description": "<ul> <li>(非必须, 是否邮件订阅，0-不订阅，1-订阅)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "autoChoose",
+            "description": "<ul> <li>(非必须, 用户级别是否自动选房，0-no，1-yes)</li> </ul>"
           }
         ]
       }
