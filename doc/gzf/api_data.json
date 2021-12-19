@@ -127,6 +127,56 @@
   },
   {
     "type": "get",
+    "url": "api/pay/consult",
+    "title": "获取咨询预支付信息",
+    "name": "pay-consult_pay",
+    "group": "pay",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "nickName",
+            "description": "<ul> <li>昵称 (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": {\n        \"timeStamp\": 1628096955,\n        \"nonceStr\": \"aaade446b34d4f179f3debfe61a08922\",\n        \"packageStr\": \"prepay_id=wx0501091450211077d105b239c8b3fc0000\",\n        \"signType\": \"RSA\",\n        \"paySign\": \"d59CY6DVH0A3JJC34kDm6T8fvJMN1RLgV1cPhkUQoO9FiF1ZU2QDaLAYu1PUdmbTbPV3fsksMXLhjxb+lGh73+zqZLu9o65DxkpJ8SYh60LcNIdbFmuQ3+Osy78M6r82blDctpwn0rqUFAFvJl+7Nv8qi8fHaOY/D7NcAC8RIlKlb9wZHTJS245N2F19jckcVo+Mkdtqapnv4A37qn/Q50lt5ChiflLj7XIniy3N1aHckHdLQq2+LySCk3IOtaA6FQlhE1dBDTFpTjVXFZWDj4b5rWhXmadMsPCvGAW2OeOxOg74gWNGdLLITlcZRqevx+AfKZ1m4Hkkda6YHkyCtQ==\"\n    }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/PayController.java",
+    "groupTitle": "pay"
+  },
+  {
+    "type": "get",
     "url": "api/pay",
     "title": "获取预支付信息",
     "name": "pay-get",
@@ -555,6 +605,43 @@
     "version": "0.0.0",
     "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/RuleController.java",
     "groupTitle": "rule"
+  },
+  {
+    "type": "get",
+    "url": "api/user/consult",
+    "title": "获取用户咨询付费信息",
+    "name": "user-consult",
+    "group": "user",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": {\n        \"code\": \"12345678\", // 验证码, 如果未购买过, 则code=\"\"\n        \"payDay\": \"2021-10-22 11:11:11\" // 支付日期, 如果未购买过, 则payDay=null\n    }\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/UserController.java",
+    "groupTitle": "user"
   },
   {
     "type": "post",
