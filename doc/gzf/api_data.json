@@ -82,6 +82,31 @@
     "groupTitle": "admin"
   },
   {
+    "type": "get",
+    "url": "api/admin/getAllV2",
+    "title": "获取包括非Vip的自动选房",
+    "name": "admin-getAllV2",
+    "group": "admin",
+    "description": "<p>请求方需要在ip白名单中；规则中的null值会被过滤</p>",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n {\n    \"status\": 0,\n    \"errorCode\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"type\": 1, // 0-非会员; 2-终身会员\n            \"emailExpireDate\": \"2021-10-01\", // 可以为null，遗留参数，需要忽略\n            \"name\": \"潘瑞峰\",\n            \"email\": \"123@qq.com\",\n            \"account\": \"prf\",\n            \"password\": \"MTIzMTIz\", //base64值\n            \"manualStartDate\": \"2021-01-01\", // 人为输入的公租房账号start date，可以为null\n            \"emailSubscription\": 1, // 1-订阅，0-不订阅\n            \"autoChoose\": 1, // 用户级别的开关, 1-yes, 0-no\n            \"realName\": \"哈哈\",\n            \"rule\": [\n                {\n                    \"id\": 1,\n                    \"userId\": 1,\n                    \"projectId\": 8311,\n                    \"name\": \"玉兰路60弄\",\n                    \"minArea\": 70,\n                    \"maxArea\": 100,\n                    \"autoChoose\": 1\n                },\n                {\n                    \"id\": 2,\n                    \"userId\": 1,\n                    \"projectId\": 8312,\n                    \"name\": \"和炯路501弄（德康苑）\",\n                    \"targetType\": \"[1,2]\",\n                    \"excludeType\": \"[3]\",\n                    \"excludeFloor\": \"[1,3]\",\n                    \"minFloor\": 2,\n                    \"maxPrice\": 100,\n                    \"minArea\": 70,\n                    \"maxArea\": 100,\n                    \"autoChoose\": 1\n                },\n                {\n                    \"id\": 3,\n                    \"userId\": 1,\n                    \"projectId\": 8313,\n                    \"name\": \"航城三路288弄（同悦湾华庭）\",\n                    \"autoChoose\": 1\n                }\n            ]\n        }\n    ]\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthEorror\",\n\t\t\"data\": \"错误信息\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/gzf/src/main/java/com/gzf/controller/AdminController.java",
+    "groupTitle": "admin"
+  },
+  {
     "type": "post",
     "url": "api/admin/login",
     "title": "管理员登录",
