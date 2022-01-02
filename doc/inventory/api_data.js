@@ -244,7 +244,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 ok\n{\n\t\"status\": 0,\n\t\"errorCode\": \"Success\",\n\t\"data\": {\n\t     \"list\": [\n\t         {\n\t             \"sourceProductId\": \"123\", // product的主键\n\t             \"category\": \"category1\",\n\t             \"vendor\": \"vendor1\",\n\t             \"title\": \"标题\",\n\t             \"description\": \"这是描述\",\n\t             \"parentSKU\": null,\n\t             \"mainImageUrl\": \"http://xxx.com/x.jpg\",\n\t             \"productImageUrls\": \"http://xxx.com/1.jpg,http://xxx.com/2.jpg\"\n\t             \"sizeChartUrl\": null,\n\t             \"weight\": 2000,\n\t             \"packageLength\": 40,\n\t             \"packageWidth\": 40,\n\t             \"packageHeight\": 40,\n\t             \"models\": [\n\t                 {\n\t                     \"modelId\": \"efgh\", // model的主键\n\t                     \"sourceSKU\": \"BS\",\n\t                     \"modelImageUrl\": \"http://xxx.com/x.jpg\",\n\t                     \"variationName1\": \"名称1\",\n\t                     \"variationName2\": \"名称2\",\n\t                     \"variationValue1\": \"value1\",\n\t                     \"variationValue2\": \"value2\",\n\t                     \"sourcingCost\": 100,\n\t                     \"handlingFee\": -1, // -1代表未填\n\t                     \"sourceInventoryUnits\": 20,\n\t                     \"inStockUnits\": 10\n\t                 },\n\t                 {\n\t                     \"modelId\": \"adada\", // model的主键\n\t                     \"sourceSKU\": \"WS\",\n\t                     \"modelImageUrl\": \"http://xxx.com/x.jpg\",\n\t                     \"variationName1\": \"名称1\",\n\t                     \"variationName2\": \"名称2\",\n\t                     \"variationValue1\": \"value1\",\n\t                     \"variationValue2\": \"value2\",\n\t                     \"sourcingCost\": 100,\n\t                     \"handlingFee\": -1, // -1代表未填\n\t                     \"sourceInventoryUnits\": 20,\n\t                     \"inStockUnits\": 10\n\t                 }\n\t             ]\n\t         }\n\t     ],\n\t     \"pageSize\": 10,\n\t     \"pageNum\": 1,\n\t     \"totalPages\": 6, // 页的总数\n\t     \"totalCount\": 54 // 数据的总数\n\t}\n}",
+          "content": "HTTP/1.1 200 ok\n{\n\t\"status\": 0,\n\t\"errorCode\": \"Success\",\n\t\"data\": {\n\t     \"list\": [\n\t         {\n\t             \"sourceProductId\": \"123\", // product的主键\n\t             \"shopeeCategoryId\": \"1005\",\n\t             \"category\": \"category1\",\n\t             \"vendor\": \"vendor1\",\n\t             \"title\": \"标题\",\n\t             \"description\": \"这是描述\",\n\t             \"parentSKU\": null,\n\t             \"mainImageUrl\": \"http://xxx.com/x.jpg\",\n\t             \"productImageUrls\": \"http://xxx.com/1.jpg,http://xxx.com/2.jpg\"\n\t             \"sizeChartUrl\": null,\n\t             \"weight\": 2000,\n\t             \"packageLength\": 40,\n\t             \"packageWidth\": 40,\n\t             \"packageHeight\": 40,\n\t             \"models\": [\n\t                 {\n\t                     \"modelId\": \"efgh\", // model的主键\n\t                     \"sourceSKU\": \"BS\",\n\t                     \"modelImageUrl\": \"http://xxx.com/x.jpg\",\n\t                     \"variationName1\": \"名称1\",\n\t                     \"variationName2\": \"名称2\",\n\t                     \"variationValue1\": \"value1\",\n\t                     \"variationValue2\": \"value2\",\n\t                     \"sourcingCost\": 100,\n\t                     \"handlingFee\": -1, // -1代表未填\n\t                     \"sourceInventoryUnits\": 20,\n\t                     \"inStockUnits\": 10\n\t                 },\n\t                 {\n\t                     \"modelId\": \"adada\", // model的主键\n\t                     \"sourceSKU\": \"WS\",\n\t                     \"modelImageUrl\": \"http://xxx.com/x.jpg\",\n\t                     \"variationName1\": \"名称1\",\n\t                     \"variationName2\": \"名称2\",\n\t                     \"variationValue1\": \"value1\",\n\t                     \"variationValue2\": \"value2\",\n\t                     \"sourcingCost\": 100,\n\t                     \"handlingFee\": -1, // -1代表未填\n\t                     \"sourceInventoryUnits\": 20,\n\t                     \"inStockUnits\": 10\n\t                 }\n\t             ]\n\t         }\n\t     ],\n\t     \"pageSize\": 10,\n\t     \"pageNum\": 1,\n\t     \"totalPages\": 6, // 页的总数\n\t     \"totalCount\": 54 // 数据的总数\n\t}\n}",
           "type": "json"
         },
         {
@@ -260,7 +260,7 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "api/inventory/model/{modelId}/update",
+    "url": "api/inventory/model/update",
     "title": "更新model数据",
     "name": "inventory-model-update",
     "group": "inventory",
@@ -280,6 +280,13 @@ define({ "api": [
     "parameter": {
       "fields": {
         "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "modelIds",
+            "description": "<ul> <li>model id列表 (必须, json数组, 最大200个id, 如 [&quot;id1&quot;,&quot;id2&quot;])</li> </ul>"
+          },
           {
             "group": "Parameter",
             "type": "Integer",
@@ -324,7 +331,7 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "api/inventory/product/{sourceProductId}/update",
+    "url": "api/inventory/product/update",
     "title": "更新product数据",
     "name": "inventory-product-update",
     "group": "inventory",
@@ -344,6 +351,13 @@ define({ "api": [
     "parameter": {
       "fields": {
         "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "sourceProductIds",
+            "description": "<ul> <li>产品id列表 (必须, json数组, 最大200个id, 如 [&quot;id1&quot;,&quot;id2&quot;])</li> </ul>"
+          },
           {
             "group": "Parameter",
             "type": "String",
