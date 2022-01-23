@@ -214,14 +214,14 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "filterKey",
-            "description": "<ul> <li>过滤的key (非必须, 枚举有: sourceProductId, vendor, parentSKU, title)</li> </ul>"
+            "description": "<ul> <li>过滤的key (非必须, 枚举有: globalProductId, sourceProductId, vendor, parentSKU, title)</li> </ul>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "filterValue",
-            "description": "<ul> <li>过滤的value (非必须, 如 123, &quot;vendor1&quot;, &quot;parent_sku_1&quot;, &quot;商品标题xxx&quot;)</li> </ul>"
+            "description": "<ul> <li>过滤的value (非必须, 如 234, 123, &quot;vendor1&quot;, &quot;parent_sku_1&quot;, &quot;商品标题xxx&quot;)</li> </ul>"
           },
           {
             "group": "Parameter",
@@ -244,7 +244,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 ok\n{\n\t\"status\": 0,\n\t\"errorCode\": \"Success\",\n\t\"data\": {\n\t     \"list\": [\n\t         {\n\t             \"sourceProductId\": \"123\", // product的主键\n\t             \"shopeeCategoryId\": \"1005\",\n\t             \"category\": \"category1\",\n\t             \"vendor\": \"vendor1\",\n\t             \"title\": \"标题\",\n\t             \"description\": \"这是描述\",\n\t             \"parentSKU\": null,\n\t             \"mainImageUrl\": \"http://xxx.com/x.jpg\",\n\t             \"productImageUrls\": \"http://xxx.com/1.jpg,http://xxx.com/2.jpg\"\n\t             \"sizeChartUrl\": null,\n\t             \"weight\": 2000,\n\t             \"packageLength\": 40,\n\t             \"packageWidth\": 40,\n\t             \"packageHeight\": 40,\n\t             \"models\": [\n\t                 {\n\t                     \"modelId\": \"efgh\", // model的主键\n\t                     \"sourceSKU\": \"BS\",\n\t                     \"modelImageUrl\": \"http://xxx.com/x.jpg\",\n\t                     \"variationName1\": \"名称1\",\n\t                     \"variationName2\": \"名称2\",\n\t                     \"variationValue1\": \"value1\",\n\t                     \"variationValue2\": \"value2\",\n\t                     \"sourcingCost\": 100,\n\t                     \"handlingFee\": -1, // -1代表未填\n\t                     \"sourceInventoryUnits\": 20,\n\t                     \"inStockUnits\": 10\n\t                 },\n\t                 {\n\t                     \"modelId\": \"adada\", // model的主键\n\t                     \"sourceSKU\": \"WS\",\n\t                     \"modelImageUrl\": \"http://xxx.com/x.jpg\",\n\t                     \"variationName1\": \"名称1\",\n\t                     \"variationName2\": \"名称2\",\n\t                     \"variationValue1\": \"value1\",\n\t                     \"variationValue2\": \"value2\",\n\t                     \"sourcingCost\": 100,\n\t                     \"handlingFee\": -1, // -1代表未填\n\t                     \"sourceInventoryUnits\": 20,\n\t                     \"inStockUnits\": 10\n\t                 }\n\t             ]\n\t         }\n\t     ],\n\t     \"pageSize\": 10,\n\t     \"pageNum\": 1,\n\t     \"totalPages\": 6, // 页的总数\n\t     \"totalCount\": 54 // 数据的总数\n\t}\n}",
+          "content": "HTTP/1.1 200 ok\n{\n\t\"status\": 0,\n\t\"errorCode\": \"Success\",\n\t\"data\": {\n\t     \"list\": [\n\t         {\n\t             \"globalProductId\": \"123\", // product的主键, 全球产品id\n\t             \"globalStoreName\": \"全球商铺名\", // 全球商铺名\n\t             \"sourceProductId\": \"123\", // 非主键, 可能为空\n\t             \"shopeeCategoryId\": \"1005\",\n\t             \"category\": \"category1\",\n\t             \"vendor\": \"vendor1\",\n\t             \"title\": \"标题\",\n\t             \"description\": \"这是描述\",\n\t             \"parentSKU\": null,\n\t             \"mainImageUrl\": \"http://xxx.com/x.jpg\",\n\t             \"productImageUrls\": \"http://xxx.com/1.jpg,http://xxx.com/2.jpg\"\n\t             \"sizeChartUrl\": null,\n\t             \"weight\": 2000,\n\t             \"packageLength\": 40,\n\t             \"packageWidth\": 40,\n\t             \"packageHeight\": 40,\n\t             \"models\": [\n\t                 {\n\t                     \"modelId\": \"efgh\", // model的主键\n\t                     \"sourceSKU\": \"BS\",\n\t                     \"modelImageUrl\": \"http://xxx.com/x.jpg\",\n\t                     \"variationName1\": \"名称1\",\n\t                     \"variationName2\": \"名称2\",\n\t                     \"variationValue1\": \"value1\",\n\t                     \"variationValue2\": \"value2\",\n\t                     \"variationImageUrl\": \"https://xxx.jpg\", // 变种图\n\t                     \"sourcingCost\": 100, // 全球产品价格, 单位分\n\t                     \"handlingFee\": -1, // -1代表未填\n\t                     \"sourceInventoryUnits\": 20, // 全球产品库存\n\t                     \"inStockUnits\": 10\n\t                 },\n\t                 {\n\t                     \"modelId\": \"adada\", // model的主键\n\t                     \"sourceSKU\": \"WS\",\n\t                     \"modelImageUrl\": \"http://xxx.com/x.jpg\",\n\t                     \"variationName1\": \"名称1\",\n\t                     \"variationName2\": \"名称2\",\n\t                     \"variationValue1\": \"value1\",\n\t                     \"variationValue2\": \"value2\",\n\t                     \"variationImageUrl\": \"https://xxx.jpg\", // 变种图\n\t                     \"sourcingCost\": 100,\n\t                     \"handlingFee\": -1, // -1代表未填\n\t                     \"sourceInventoryUnits\": 20,\n\t                     \"inStockUnits\": 10\n\t                 }\n\t             ]\n\t         }\n\t     ],\n\t     \"pageSize\": 10,\n\t     \"pageNum\": 1,\n\t     \"totalPages\": 6, // 页的总数\n\t     \"totalCount\": 54 // 数据的总数\n\t}\n}",
           "type": "json"
         },
         {
@@ -355,8 +355,8 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "sourceProductIds",
-            "description": "<ul> <li>产品id列表 (必须, json数组, 最大200个id, 如 [&quot;id1&quot;,&quot;id2&quot;])</li> </ul>"
+            "field": "globalProductIds",
+            "description": "<ul> <li>全球产品id列表 (必须, json数组, 最大200个id, 如 [&quot;id1&quot;,&quot;id2&quot;])</li> </ul>"
           },
           {
             "group": "Parameter",
@@ -371,6 +371,13 @@ define({ "api": [
             "optional": false,
             "field": "vendor",
             "description": "<ul> <li>供应商 (非必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "sourceProductId",
+            "description": "<ul> <li>1688的产品id (非必须)</li> </ul>"
           }
         ]
       }
