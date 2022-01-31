@@ -402,6 +402,137 @@
   },
   {
     "type": "get",
+    "url": "api/shopee/authUrl",
+    "title": "获取授权的url",
+    "name": "shopee-authUrl",
+    "group": "shopee",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n\t\"status\": 0,\n\t\"errorCode\": \"Success\",\n\t\"data\": \"https://partner.shopeemobile.com/api/v2/shop/auth_partner?partner_id=2002928&timestamp=1643444913&sign=394228e2bbbdc5df60dd0f15b18897b7612a9778df59330c357caceaefe04a6b\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthError\",\n\t\t\"data\": \"用户未登录\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/inventory/src/main/java/com/bbb/inventory/controller/ShopeeController.java",
+    "groupTitle": "shopee"
+  },
+  {
+    "type": "post",
+    "url": "api/shopee/getAuthList",
+    "title": "获取授权列表",
+    "name": "shopee-getAuthList",
+    "group": "shopee",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n\t\t\"status\": 0,\n\t\t\"errorCode\": \"Success\",\n\t\t\"data\": [\n\t\t    {\n\t\t        \"authId\": \"2002928_1313818_0\",\n\t\t        \"shopMerchantId\": 1313818, // shopId 或者 merchantId, 取决于type\n\t\t        \"type\": 0, // 0-merchant类型的授权, 1-shop店铺类型授权\n\t\t        \"partnerId\": 2002928, // 授权的partnerId\n\t\t        \"expireIn\": 14400, // accessToken在14400秒后过期\n\t\t        \"lastRefreshTime\": \"2022-01-31 23:53:27\", // 上次token刷新的时间, 加上expireIn之后是token的有效期\n\t\t        \"shopName\": \"\", // 店铺名字, 只有当type=1的时候有值\n\t\t        \"region\": \"\", // 店铺地区, 只有当type=1的时候有值\n\t\t        \"logisticsInfoList\": [] // 店铺logistics列表, 只有当type=1的时候有值\n\t\t    },\n\t\t    {\n\t\t        \"authId\": \"2002928_429774185_1\",\n\t\t        \"shopMerchantId\": 429774185,\n\t\t        \"type\": 1,\n\t\t        \"partnerId\": 2002928,\n\t\t        \"expireIn\": 14400,\n\t\t        \"lastRefreshTime\": \"2022-01-31 23:53:27\",\n\t\t        \"shopName\": \"WearBiBiBi\",\n\t\t        \"region\": \"MY\",\n\t\t        \"logisticsInfoList\": [\n\t\t            {\n                     \"id\": \"429774185_28016\",\n                     \"logisticsChannelId\": 28016,\n                     \"logisticsChannelName\": \"Standard Delivery\",\n                     \"shopId\": 429774185\n\t\t            },\n\t\t            {\n                     \"id\": \"429774185_28052\",\n                     \"logisticsChannelId\": 28052,\n                     \"logisticsChannelName\": \"Economy Delivery (Sea Shipping)\",\n                     \"shopId\": 429774185\n\t\t            }\n\t\t        ]\n\t\t    }\n\t\t]\n\t}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthError\",\n\t\t\"data\": \"用户未登录\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/inventory/src/main/java/com/bbb/inventory/controller/ShopeeController.java",
+    "groupTitle": "shopee"
+  },
+  {
+    "type": "post",
+    "url": "api/shopee/oauth",
+    "title": "shopee授权",
+    "name": "shopee-oauth",
+    "group": "shopee",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>身份凭证</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<ul> <li>授权获取的code (必须)</li> </ul>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "mainAccountId",
+            "description": "<ul> <li>授权获取的mainAccountId (必须)</li> </ul>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 ok\n{\n\t\"status\": 0,\n\t\"errorCode\": \"Success\",\n\t\"data\": null\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "\tHTTP/1.1 200 ok\n\t{\n \t\"status\": 1,\n\t\t\"errorCode\": \"AuthError\",\n\t\t\"data\": \"用户未登录\"\n\t}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "C:/Users/86137/Documents/workspace/inventory/src/main/java/com/bbb/inventory/controller/ShopeeController.java",
+    "groupTitle": "shopee"
+  },
+  {
+    "type": "get",
     "url": "api/vendor/list",
     "title": "获取vendor列表",
     "name": "vendor-list",
